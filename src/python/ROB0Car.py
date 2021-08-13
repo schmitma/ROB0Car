@@ -27,3 +27,6 @@ def main():
     for s in range(100,0,-10):
         rob0car.drive(s)
         time.sleep(1)
+
+if __name__ == '__main__':
+    main()
