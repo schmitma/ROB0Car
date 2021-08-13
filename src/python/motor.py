@@ -24,6 +24,7 @@ class Motor:
         max_dc = 10     # Corresponds to 2 ms @ 50 Hz
         dc = min(max(7.5 + mot_speed_perc*2.5/100, min_dc), max_dc)
         print('DutyCycle: ' + str(dc))
+        return dc
 
     def arm(self):
         self.set_motor_speed(0)
