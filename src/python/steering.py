@@ -17,4 +17,4 @@ class Steering:
         self._pi.set_servo_pulsewidth(self._pin, 0)
 
     def set_steering_dc(self, steering_dc):
-        self._pi.set_servo_pulswidth(self._pin, steering_dc)
+        self._pi.set_servo_pulsewidth(self._pin, steering_dc)
