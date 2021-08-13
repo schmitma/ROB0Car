@@ -19,7 +19,7 @@ class Motor:
         self._pi.set_PWM_frequency(pin, frequency)
         self._pi.set_PWM_range(pin, 100)  # Control PWM from 0 .. 100 %
 
-    def speedperc2dc(mot_speed_perc):
+    def speedperc2dc(self, mot_speed_perc):
         min_dc = 5      # Corresponds to 1 ms @ 50 Hz
         max_dc = 10     # Corresponds to 2 ms @ 50 Hz
         dc = min(max(7.5 + mot_speed_perc*2.5/100, min_dc), max_dc)
