@@ -26,18 +26,18 @@ class MinimalSubscriber(Node):
         steering_dc = msg.data
         self.rob0car.steering.set_steering_dc(steering_dc)
 
-    def main(args=None):
-        # initialize the rob0car node
-        rclpy.init(args=args)
-        minimal_subscriber = MinimalSubscriber()
+def main(args=None):
+    # initialize the rob0car node
+    rclpy.init(args=args)
+    minimal_subscriber = MinimalSubscriber()
 
-        # wait for incoming commands
-        rclpy.spin(minimal_subscriber)
+    # wait for incoming commands
+    rclpy.spin(minimal_subscriber)
 
-        # Interrupt detected, shut down
-        minimal_subscriber.rob0car.stop()
-        minimal_subscriber.destroy_node()
-        rclpy.shutdown()
+    # Interrupt detected, shut down
+    minimal_subscriber.rob0car.stop()
+    minimal_subscriber.destroy_node()
+    rclpy.shutdown()
 
-    if __name__ == '__main__':
-        main()
+if __name__ == '__main__':
+    main()
