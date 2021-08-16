@@ -4,6 +4,7 @@ import os
 import logging
 import sys
 import time
+import numpy as np
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -45,12 +46,12 @@ class Motor:
         self._pi.set_PWM_dutycycle(self._pin, 0)
         time.sleep(3)
 
-        for i in range(0,max_arming_throttle_dc,arming_throttle_dc_step):
+        for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
             logging.debug("Motor DC: " + str(i))
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
         
-        for i in range(max_arming_throttle_dc,0,-arming_throttle_dc_step):
+        for i in np.arange(max_arming_throttle_dc,0,-arming_throttle_dc_step):
             logging.debug("Motor DC: " + str(i))
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
