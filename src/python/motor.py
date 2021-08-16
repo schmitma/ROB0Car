@@ -40,7 +40,7 @@ class Motor:
     def arm(self):
         logging.debug("Motor.arm")
         max_arming_throttle_dc = 7
-        arming_throttle_dc_step = 1
+        arming_throttle_dc_step = 0.1
         arming_throttle_dc_wait = 0.1
 
         self._pi.set_PWM_dutycycle(self._pin, 0)
