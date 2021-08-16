@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 import pigpio
 import os
+import logging
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 class Motor:
     '''A brushless DC motor driven by one pin on a Raspberry Pi.'''
@@ -8,6 +11,7 @@ class Motor:
     def __init__ (self, pin, frequency=50):
         #  Configure GPIO
         if os.system ("pgrep pigpiod") != 0:
+            logging.debug("Starting pipgiod")
             os.system("sudo pigpiod")
 
         self._pi = pigpio.pi()  # Connect to PIGPIO-Daemon
