@@ -5,43 +5,52 @@ import logging
 import sys
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int32
+from sensor_msgs.msg import Joy
 from motor import Motor
-from ROB0Car import ROB0Car
+from steering import Steering
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
-class MinimalSubscriber(Node):
-    def __init__(self):
-        logging.debug("MinimalSubscriber.__init__")
-        super().__init__('minimal_subscriber')
-        self.subscription = self.create_subscription(
-            Int32,
-            'steering',
-            self.listener_callback,
-            10)
-        self.subscription # prevent unused variable warning
-        self.rob0car = ROB0Car()
+class ROB0Car(Node):
+    def __init__ (self):
+        logging.debug("ROBOCar.__init__")
 
-    def listener_callback(self, msg):
-        logging.debug("MinimalSubscriber.listener_callback")
-        steering_dc = msg.data
-        logging.debug("Steering DC: " + str(steering_dc))
-        self.rob0car.steering.set_steering_dc(steering_dc)
+        super().__init__('ROB0Car')
+
+        self._leftMotor = Motor(4, 50)
+        self._rightMotor = Motor(5, 50)
+        self._steering = Steering(3)
+
+        self._joy_subscription = self.create_subscription(
+            Joy,
+            'joy',
+            self._joy_callback,
+            5)
+
+    def drive(self, speed):
+        logging.debug("ROBOCar.drive")
+        self._leftMotor.set_motor_speed(speed)
+        self._rightMotor.set_motor_speed(speed)
+
+    def steer(self, steering_dc):
+        self._steering.set_steering_dc(steering_dc)
+
+    def _joy_callback(self, msg):
+        self._steering.set_steering_perc(msg.axes[0]*100)
 
 def main(args=None):
     logging.debug("main")
     # initialize the rob0car node
     rclpy.init(args=args)
-    minimal_subscriber = MinimalSubscriber()
+    rob0car = ROB0Car()
 
     # wait for incoming commands
-    logging.debug("main: Waiting for incoming ROS2 messages on topic steering.")
-    rclpy.spin(minimal_subscriber)
+    logging.debug("main: Waiting for incoming ROS2 messages on topic joy.")
+    rclpy.spin(rob0car)
 
     # Interrupt detected, shut down
-    minimal_subscriber.rob0car.stop()
-    minimal_subscriber.destroy_node()
+    #rob0car.stop()
+    rob0car.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

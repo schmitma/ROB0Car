@@ -24,3 +24,11 @@ class Steering:
     def set_steering_dc(self, steering_dc):
         logging.debug("Steering.set_steering_dc")
         self._pi.set_servo_pulsewidth(self._pin, steering_dc)
+
+    def set_steering_perc(self, steering_perc):
+        logging.debug("Steering.set_steering_perc")
+        self.set_steering_dc(self.steering_perc2dc(steering_perc))
+
+    def steering_perc2dc(self, steering_perc):
+        logging.debug("Steering.steering_perc2dc")
+        return steering_perc * 5 + 1500
