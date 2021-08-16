@@ -39,25 +39,25 @@ class Motor:
 
     def arm(self):
         logging.debug("Motor.arm")
-        max_arming_throttle_dc = 7
-        arming_throttle_dc_step = 0.1
+        max_arming_throttle_dc = 8
+        arming_throttle_dc_step = 1
         arming_throttle_dc_wait = 0.1
 
         self._pi.set_PWM_dutycycle(self._pin, 0)
-        time.sleep(3)
+        time.sleep(1)
 
         for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
             logging.debug("Motor DC: " + str(i))
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
         
-        for i in np.arange(max_arming_throttle_dc,0,-arming_throttle_dc_step):
+        for i in np.arange(max_arming_throttle_dc,5,-arming_throttle_dc_step):
             logging.debug("Motor DC: " + str(i))
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
 
         self._pi.set_PWM_dutycycle(self._pin, 7.5)
-        time.sleep(3)
+        time.sleep(1)
 
         self._isArmed = True
 
