@@ -14,12 +14,11 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 class MinimalSubscriber(Node):
     def __init__(self):
         super().__init__('minimal_subscriber')
-        self.subsricpiton = self.create_subscription(
+        self.subscription = self.create_subscription(
             Int32,
             'steering',
             self.listener_callback,
             10)
-        self.subscription
         self.rob0car = ROB0Car()
 
     def listener_callback(self, msg):
