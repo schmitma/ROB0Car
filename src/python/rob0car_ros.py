@@ -36,15 +36,15 @@ class ROB0Car(Node):
         self._steering.set_steering_dc(steering_dc)
 
     def _joy_callback(self, msg):
-        self._steering.set_steering_perc(msg.axes[0]*  100)
+        self._steering.set_steering_perc(msg.axes[0] *  100)
         motor_speed_perc = msg.axes[1] * 100
         self._leftMotor.set_motor_speed(motor_speed_perc)
         self._rightMotor.set_motor_speed(motor_speed_perc)
 
-        if not self._leftMotor._isArmed and msg.buttons[0]:
+        if not self._leftMotor._isArmed and msg.buttons[0] == 1:
             self._leftMotor.arm
 
-        if not self._rightMotor._isArmed and msg.buttons[0]:
+        if not self._rightMotor._isArmed and msg.buttons[0] == 1:
             self._rightMotor.arm
 
 def main(args=None):
