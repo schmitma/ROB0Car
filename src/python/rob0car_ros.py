@@ -41,10 +41,10 @@ class ROB0Car(Node):
         self._leftMotor.set_motor_speed(motor_speed_perc)
         self._rightMotor.set_motor_speed(motor_speed_perc)
 
-        if not self._leftMotor._isArmed and msg.buttons[0] == 1:
+        if self._leftMotor._isArmed == False and msg.buttons[0] == 1:
             self._leftMotor.arm
 
-        if not self._rightMotor._isArmed and msg.buttons[0] == 1:
+        if self._rightMotor._isArmed == False and msg.buttons[0] == 1:
             self._rightMotor.arm
 
 def main(args=None):
