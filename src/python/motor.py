@@ -10,6 +10,7 @@ class Motor:
     '''A brushless DC motor driven by one pin on a Raspberry Pi.'''
 
     def __init__ (self, pin, frequency=50):
+        logging.debug("Motor.__init__")
         #  Configure GPIO
         if os.system ("pgrep pigpiod") != 0:
             logging.debug("Starting pipgiod")
@@ -25,6 +26,7 @@ class Motor:
         self._pi.set_PWM_range(pin, 100)  # Control PWM from 0 .. 100 %
 
     def speedperc2dc(self, mot_speed_perc):
+        logging.debug("Motor.speedperc2dc")
         min_dc = 5      # Corresponds to 1 ms @ 50 Hz
         max_dc = 10     # Corresponds to 2 ms @ 50 Hz
         dc = min(max(7.5 + mot_speed_perc*2.5/100, min_dc), max_dc)
@@ -32,8 +34,10 @@ class Motor:
         return dc
 
     def arm(self):
+        logging.debug("Motor.arm")
         self.set_motor_speed(0)
 
-    def set_motor_speed (self, speed):      
+    def set_motor_speed (self, speed):
+        logging.debug("Motor.set_motor_speed")    
         self._pi.set_PWM_dutycycle(self._pin, self.speedperc2dc(speed))
         self._speed = speed

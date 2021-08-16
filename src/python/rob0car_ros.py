@@ -13,6 +13,7 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 class MinimalSubscriber(Node):
     def __init__(self):
+        logging.debug("MinimalSubscriber.__init__")
         super().__init__('minimal_subscriber')
         self.subscription = self.create_subscription(
             Int32,
@@ -23,11 +24,13 @@ class MinimalSubscriber(Node):
         self.rob0car = ROB0Car()
 
     def listener_callback(self, msg):
+        logging.debug("MinimalSubscriber.listener_callback")
         steering_dc = msg.data
         logging.debug("Steering DC: " + str(steering_dc))
         self.rob0car.steering.set_steering_dc(steering_dc)
 
 def main(args=None):
+    logging.debug("main")
     # initialize the rob0car node
     rclpy.init(args=args)
     minimal_subscriber = MinimalSubscriber()
