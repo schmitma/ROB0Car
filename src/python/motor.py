@@ -51,7 +51,7 @@ class Motor:
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
         
-        for i in np.arange(max_arming_throttle_dc,5,-arming_throttle_dc_step):
+        for i in np.arange(max_arming_throttle_dc,3,-arming_throttle_dc_step):
             logging.debug("Motor DC: " + str(i))
             self._pi.set_PWM_dutycycle(self._pin, i)
             time.sleep(arming_throttle_dc_wait)
