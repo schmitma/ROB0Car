@@ -3,6 +3,7 @@ import pigpio
 import os
 import logging
 import sys
+import time
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -20,10 +21,12 @@ class Motor:
         self._pin = pin
         self._frequency = frequency
         self._speed = 0
+        self._isArmed = False
 
         self._pi.set_mode(pin, pigpio.OUTPUT)
         self._pi.set_PWM_frequency(pin, frequency)
         self._pi.set_PWM_range(pin, 100)  # Control PWM from 0 .. 100 %
+        self._pi.set_PWM_dutycycle(self._pin, 0)
 
     def speedperc2dc(self, mot_speed_perc):
         logging.debug("Motor.speedperc2dc")
@@ -35,9 +38,15 @@ class Motor:
 
     def arm(self):
         logging.debug("Motor.arm")
-        self.set_motor_speed(0)
+        self._pi.set_PWM_dutycycle(self._pin, 7)
+        time.sleep(1)
+        self._pi.set_PWM_dutycycle(self._pin, 0)
 
-    def set_motor_speed (self, speed):
-        logging.debug("Motor.set_motor_speed")    
+        self._isArmed = True
+
+    def set_motor_speed(self, speed):
+        logging.debug("Motor.set_motor_speed")
+        if not self._isArmed:
+            return    
         self._pi.set_PWM_dutycycle(self._pin, self.speedperc2dc(speed))
         self._speed = speed
