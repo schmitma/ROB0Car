@@ -19,10 +19,12 @@ class MinimalSubscriber(Node):
             'steering',
             self.listener_callback,
             10)
+        self.subscription # prevent unused variable warning
         self.rob0car = ROB0Car()
 
     def listener_callback(self, msg):
         steering_dc = msg.data
+        logging.debug("Steering DC: " + str(steering_dc))
         self.rob0car.steering.set_steering_dc(steering_dc)
 
 def main(args=None):
