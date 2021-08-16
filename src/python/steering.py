@@ -2,6 +2,7 @@
 import os
 import pigpio
 import logging
+import sys
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
