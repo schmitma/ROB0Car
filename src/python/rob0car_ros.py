@@ -36,6 +36,7 @@ def main(args=None):
     minimal_subscriber = MinimalSubscriber()
 
     # wait for incoming commands
+    logging.debug("main: Waiting for incoming ROS2 messages on topic steering.")
     rclpy.spin(minimal_subscriber)
 
     # Interrupt detected, shut down
