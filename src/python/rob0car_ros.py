@@ -45,10 +45,10 @@ class ROB0Car(Node):
         logging.debug(self._rightMotor._isArmed == False and msg.buttons[0] == 1)
         
         if self._leftMotor._isArmed == False and msg.buttons[0] == 1:
-            self._leftMotor.arm
+            self._leftMotor.arm()
 
         if self._rightMotor._isArmed == False and msg.buttons[0] == 1:
-            self._rightMotor.arm
+            self._rightMotor.arm()
 
 def main(args=None):
     logging.debug("main")
