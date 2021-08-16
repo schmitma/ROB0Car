@@ -38,9 +38,12 @@ class Motor:
 
     def arm(self):
         logging.debug("Motor.arm")
-        self._pi.set_PWM_dutycycle(self._pin, 7)
-        time.sleep(1)
         self._pi.set_PWM_dutycycle(self._pin, 0)
+        time.sleep(3)
+        self._pi.set_PWM_dutycycle(self._pin, 7)
+        time.sleep(3)
+        self._pi.set_PWM_dutycycle(self._pin, 0)
+        time.sleep(3)
 
         self._isArmed = True
 
