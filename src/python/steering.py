@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 import os
 import pigpio
+import logging
+import sys
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 class Steering:
     '''A servo motor driven by one pin on a Raspberry Pi.'''
 
     def __init__ (self, pin):
+        logging.debug("Steering.__init__")
         #  Configure GPIO
         if os.system ("pgrep pigpiod") != 0:
             os.system("sudo pigpiod")
@@ -17,4 +22,13 @@ class Steering:
         self._pi.set_servo_pulsewidth(self._pin, 0)
 
     def set_steering_dc(self, steering_dc):
+        logging.debug("Steering.set_steering_dc")
         self._pi.set_servo_pulsewidth(self._pin, steering_dc)
+
+    def set_steering_perc(self, steering_perc):
+        logging.debug("Steering.set_steering_perc")
+        self.set_steering_dc(self.steering_perc2dc(steering_perc))
+
+    def steering_perc2dc(self, steering_perc):
+        logging.debug("Steering.steering_perc2dc")
+        return steering_perc * 5 + 1500
