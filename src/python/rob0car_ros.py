@@ -5,7 +5,7 @@ import logging
 import sys
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Joy
+from sensor_msgs.msg import Joy, Range
 from motor import Motor
 from steering import Steering
 
@@ -21,10 +21,19 @@ class ROB0Car(Node):
         self._rightMotor = Motor(5, 50)
         self._steering = Steering(3)
 
+        self.close = 0.30 # start slowing down when obstacle within 30 cm is detected
+        self.stop = 0.10 # stop motion in direction where obstacle within 10 cm has been detected
+
         self._joy_subscription = self.create_subscription(
             Joy,
             'joy',
             self._joy_callback,
+            5)
+
+        self._range_subscription = self.create_subscription(
+            Range,
+            'range',
+            self._range_callback,
             5)
 
     def drive(self, speed):
@@ -50,6 +59,9 @@ class ROB0Car(Node):
         if self._rightMotor._isArmed == False and msg.buttons[0] == 1:
             self._rightMotor.arm()
 
+    def _range_callback(self, msg):
+        self.distance = msg.range
+        
 def main(args=None):
     logging.debug("main")
     # initialize the rob0car node

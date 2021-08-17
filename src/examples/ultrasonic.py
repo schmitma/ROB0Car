@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO
 import time, sys
 
 GPIO.setmode(GPIO.BOARD)
-trig = [11, 36]
-echo = [13, 38]
+trig = [11] #, 36]
+echo = [13] #, 38]
 
 for i in range(len(trig)):
 	GPIO.setup(echo[i], GPIO.IN)
