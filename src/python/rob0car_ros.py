@@ -21,8 +21,9 @@ class ROB0Car(Node):
         self._rightMotor = Motor(5, 50)
         self._steering = Steering(3)
 
-        self.close = 0.30 # start slowing down when obstacle within 30 cm is detected
-        self.stop = 0.10 # stop motion in direction where obstacle within 10 cm has been detected
+        self.close_distance = 0.30 # start slowing down when obstacle within 30 cm is detected
+        self.stop_distance = 0.10 # stop motion in direction where obstacle within 10 cm has been detected
+        self.distance = 400.0
 
         self._joy_subscription = self.create_subscription(
             Joy,
@@ -36,10 +37,19 @@ class ROB0Car(Node):
             self._range_callback,
             5)
 
-    def drive(self, speed):
+    def drive(self, left_motor_speed, right_motor_speed):
         logging.debug("ROBOCar.drive")
-        self._leftMotor.set_motor_speed(speed)
-        self._rightMotor.set_motor_speed(speed)
+
+        # Add in a governor to cap forward motion when we're about
+        # to collide with something (but still backwards motion)
+        governor = min(1, (self.distance - self.stop_distance) / \
+                           (self.close_distance - self.stop_distance))
+        
+        left_motor_speed *= governor
+        right_motor_speed *= governor
+        
+        self._leftMotor.set_motor_speed(left_motor_speed)
+        self._rightMotor.set_motor_speed(right_motor_speed)
 
     def steer(self, steering_dc):
         self._steering.set_steering_dc(steering_dc)
@@ -47,8 +57,7 @@ class ROB0Car(Node):
     def _joy_callback(self, msg):
         self._steering.set_steering_perc(msg.axes[0] *  100)
         motor_speed_perc = msg.axes[1] * 100
-        self._leftMotor.set_motor_speed(motor_speed_perc)
-        self._rightMotor.set_motor_speed(motor_speed_perc)
+        self.drive(motor_speed_perc, motor_speed_perc)
 
         logging.debug(self._leftMotor._isArmed == False and msg.buttons[0] == 1)
         logging.debug(self._rightMotor._isArmed == False and msg.buttons[0] == 1)

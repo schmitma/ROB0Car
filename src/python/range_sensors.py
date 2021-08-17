@@ -3,9 +3,12 @@
 import RPi.GPIO as GPIO
 import time
 import math
+import logging, sys
 
-pinTrigger = 17
-pinEcho = 18
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
+pinTrigger = 11
+pinEcho = 13
 
 
 class UltrasonicDistanceSensor:
@@ -20,7 +23,7 @@ class UltrasonicDistanceSensor:
 
     def __init__ (self, pinTrigger, pinEcho):
         # Configure GPIO
-        GPIO.setmode (GPIO.BCM)
+        GPIO.setmode (GPIO.BOARD)
         GPIO.setwarnings (False)
         GPIO.setup (pinTrigger, GPIO.OUT)
         GPIO.setup (pinEcho, GPIO.IN)

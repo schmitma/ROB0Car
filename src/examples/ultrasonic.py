@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import RPi.GPIO as GPIO
-import time, sys
+import time, sys, logging
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
 
 GPIO.setmode(GPIO.BOARD)
 trig = [11] #, 36]
@@ -11,6 +14,8 @@ for i in range(len(trig)):
 	GPIO.setup(trig[i], GPIO.OUT)
 
 def meas_dist(n):
+	logging.debug("meas_dist()")
+	
 	# print("Trigger Pin: ", trig[n], 
 	    #   "\nEcho Pin: ", echo[n])
 	GPIO.output(trig[n], True)

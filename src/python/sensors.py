@@ -1,11 +1,13 @@
 #! /usr/bin/env python3
-import time
+import time, logging
 from range_sensors import UltrasonicDistanceSensor
 
 #ROS 2
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Range
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 class Sensors (Node):
     '''List of sensors for a robot
@@ -24,8 +26,7 @@ class Sensors (Node):
 
     '''
 
-    def __init__(self, name,
-        pinTrigger, pinEcho, frequency=10):
+    def __init__(self, name, pinTrigger, pinEcho, frequency=10):
 
         """
         Parameters
@@ -58,6 +59,7 @@ class Sensors (Node):
 
     def _distance_callback (self):
         self.distance = self._distance_sensor.measure()
+        logging.debug("Distance: " + str(self.distance) + " m")
         self._range_msg.range = self.distance
         self._distance_publisher.publish(self._range_msg)
 
@@ -71,7 +73,7 @@ class Sensors (Node):
 def main(args=None):
 
     rclpy.init (args=args)
-    s = Sensors("range", pinTrigger = 17, pinEcho = 18)
+    s = Sensors("range", pinTrigger = 11, pinEcho = 13)
     print ("Spinning.")
     rclpy.spin (s)
     rclpy.shutdown()
