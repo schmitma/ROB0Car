@@ -65,7 +65,7 @@ class Motor:
 
         self._pi.set_PWM_dutycycle(self._pin, 10)
         time.sleep(1)
-        self._pi.set_PWM_dutycycle(self._pin, 7.5)
+        self._pi.set_PWM_dutycycle(self._pin, 0)
         time.sleep(1)
 
         self._isArmed = True
