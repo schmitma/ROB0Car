@@ -23,6 +23,13 @@ class Motor:
         self._frequency = frequency
         self._speed = 0
         self._isArmed = False
+        self._min_throttle_us = 1000
+        self._max_throttle_us = 2000
+        self._center_throttle_us = 1500
+        self._period_length_us = ((1/self._frequency) * (10 **3))
+        self._min_dc = self._min_throttle_us / self._period_length_us
+        self._max_dc = self._min_throttle_us / self._period_length_us
+        self._center_dc = self._center_throttle_us / self._period_length_us
 
         self._pi.set_mode(pin, pigpio.OUTPUT)
         self._pi.set_PWM_frequency(pin, frequency)
@@ -31,9 +38,8 @@ class Motor:
 
     def speedperc2dc(self, mot_speed_perc):
         logging.debug("Motor.speedperc2dc")
-        min_dc = 5      # Corresponds to 1 ms @ 50 Hz
-        max_dc = 10     # Corresponds to 2 ms @ 50 Hz
-        dc = min(max(7.5 + mot_speed_perc*2.5/100, min_dc), max_dc)
+        slope = (self._max_dc-self._center_dc)/100
+        dc = min(max(self._center_dc + mot_speed_perc * slope, self._min_dc), self._max_dc)
         print('DutyCycle: ' + str(dc))
         return dc
 
@@ -44,20 +50,24 @@ class Motor:
         arming_throttle_dc_wait = 0.1
 
         self._pi.set_PWM_dutycycle(self._pin, 0)
-        time.sleep(3)
+        time.sleep(1)
 
-        for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
-            logging.debug("Motor DC: " + str(i))
-            self._pi.set_PWM_dutycycle(self._pin, i)
-            time.sleep(arming_throttle_dc_wait)
+        # for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
+        #     logging.debug("Motor DC: " + str(i))
+        #     self._pi.set_PWM_dutycycle(self._pin, i)
+        #     time.sleep(arming_throttle_dc_wait)
         
         # for i in np.arange(max_arming_throttle_dc,3,-arming_throttle_dc_step):
             # logging.debug("Motor DC: " + str(i))
             # self._pi.set_PWM_dutycycle(self._pin, i)
             # time.sleep(arming_throttle_dc_wait)
 
-        self._pi.set_PWM_dutycycle(self._pin, 0)
-        time.sleep(3)
+        #self._pi.set_PWM_dutycycle(self._pin, 0)
+        self.set_motor_speed(self._center_dc)
+        time.sleep(1)
+
+        self.set_motor_speed(self._min_dc)
+        time.sleep(1)
 
         self._isArmed = True
 
