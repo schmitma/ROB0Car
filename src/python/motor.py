@@ -42,33 +42,29 @@ class Motor:
         dc = self._center_dc + mot_speed_perc * slope
         dc_lim = min(max(dc, self._min_dc), self._max_dc)
         print('DutyCycle: ' + str(dc))
-        print('DutyCycle limited: ' + str(dc_lim))
         return dc_lim
 
     def arm(self):
         logging.debug("Motor.arm")
-        max_arming_throttle_dc = 7
+        max_arming_throttle_dc = 7.5
         arming_throttle_dc_step = 0.1
         arming_throttle_dc_wait = 0.1
 
         self._pi.set_PWM_dutycycle(self._pin, 0)
         time.sleep(1)
 
-        # for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
-        #     logging.debug("Motor DC: " + str(i))
-        #     self._pi.set_PWM_dutycycle(self._pin, i)
-        #     time.sleep(arming_throttle_dc_wait)
+        for i in np.arange(0,max_arming_throttle_dc,arming_throttle_dc_step):
+            logging.debug("Motor DC: " + str(i))
+            self._pi.set_PWM_dutycycle(self._pin, i)
+            time.sleep(arming_throttle_dc_wait)
         
-        # for i in np.arange(max_arming_throttle_dc,3,-arming_throttle_dc_step):
-            # logging.debug("Motor DC: " + str(i))
-            # self._pi.set_PWM_dutycycle(self._pin, i)
-            # time.sleep(arming_throttle_dc_wait)
+        for i in np.arange(max_arming_throttle_dc,3,-arming_throttle_dc_step):
+            logging.debug("Motor DC: " + str(i))
+            self._pi.set_PWM_dutycycle(self._pin, i)
+            time.sleep(arming_throttle_dc_wait)
 
-        #self._pi.set_PWM_dutycycle(self._pin, 0)
+        self._pi.set_PWM_dutycycle(self._pin, 0)
         self._pi.set_PWM_dutycycle(self._pin, self._center_dc)
-        time.sleep(1)
-
-        self._pi.set_PWM_dutycycle(self._pin, self._min_dc)
         time.sleep(1)
 
         self._isArmed = True
