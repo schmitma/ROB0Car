@@ -63,10 +63,10 @@ class Motor:
             # time.sleep(arming_throttle_dc_wait)
 
         #self._pi.set_PWM_dutycycle(self._pin, 0)
-        self.set_motor_speed(self._center_dc)
+        self._pi.set_PWM_dutycycle(self._pin, self._center_dc)
         time.sleep(1)
 
-        self.set_motor_speed(self._min_dc)
+        self._pi.set_PWM_dutycycle(self._pin, self._min_dc)
         time.sleep(1)
 
         self._isArmed = True
