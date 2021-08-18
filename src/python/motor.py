@@ -26,10 +26,10 @@ class Motor:
         self._min_throttle_us = 1000
         self._max_throttle_us = 2000
         self._center_throttle_us = 1500
-        self._period_length_us = ((1/self._frequency) * (10 **3))
-        self._min_dc = self._min_throttle_us / self._period_length_us
-        self._max_dc = self._min_throttle_us / self._period_length_us
-        self._center_dc = self._center_throttle_us / self._period_length_us
+        self._period_length_us = ((1/self._frequency) * (10 **6))
+        self._min_dc = self._min_throttle_us / self._period_length_us * 100
+        self._max_dc = self._min_throttle_us / self._period_length_us * 100
+        self._center_dc = self._center_throttle_us / self._period_length_us * 100
 
         self._pi.set_mode(pin, pigpio.OUTPUT)
         self._pi.set_PWM_frequency(pin, frequency)
