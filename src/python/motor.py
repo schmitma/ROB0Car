@@ -39,7 +39,8 @@ class Motor:
     def speedperc2dc(self, mot_speed_perc):
         logging.debug("Motor.speedperc2dc")
         slope = (self._max_dc-self._center_dc)/100
-        dc = min(max(self._center_dc + mot_speed_perc * slope, self._min_dc), self._max_dc)
+        dc = self._center_dc + mot_speed_perc * slope
+        dc_lim = min(max(dc, self._min_dc), self._max_dc)
         print('DutyCycle: ' + str(dc))
         return dc
 
