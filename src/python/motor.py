@@ -42,7 +42,8 @@ class Motor:
         dc = self._center_dc + mot_speed_perc * slope
         dc_lim = min(max(dc, self._min_dc), self._max_dc)
         print('DutyCycle: ' + str(dc))
-        return dc
+        print('DutyCycle limited: ' + str(dc_lim))
+        return dc_lim
 
     def arm(self):
         logging.debug("Motor.arm")
