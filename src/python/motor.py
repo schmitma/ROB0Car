@@ -48,6 +48,7 @@ class Motor:
             sys.exit('No valid frequency!')
 
         self._speed = 0
+        self._max_speed_perc = 30
         self._isArmed = False
         self._min_throttle_us = min_throttle_default_us / divider.get(self._protocol, 1)
         self._max_throttle_us = max_throttle_default_us / divider.get(self._protocol, 1)
@@ -64,7 +65,7 @@ class Motor:
     def speedperc2dc(self, mot_speed_perc):
         logging.debug("Motor.speedperc2dc")
         slope = (self._max_dc-self._center_dc)/100
-        dc = self._center_dc + mot_speed_perc * slope
+        dc = self._center_dc + min(self._max_speed_perc, mot_speed_perc) * slope
         dc_lim = min(max(dc, self._min_dc), self._max_dc)
         print('DutyCycle: ' + str(dc))
         return dc_lim

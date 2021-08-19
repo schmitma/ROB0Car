@@ -42,13 +42,16 @@ class ROB0Car(Node):
 
         # Add in a governor to cap forward motion when we're about
         # to collide with something (but still backwards motion)
-        governor = min(1, (self.distance - self.stop_distance) / \
+        governor = min(1, max(0, (self.distance - self.stop_distance)) / \
                            (self.close_distance - self.stop_distance))
         
+        logging.debug("Distance: " + str(self.distance))
+        logging.debug("Governor: " + str(governor))
+
         left_motor_speed *= governor
         right_motor_speed *= governor
         
-        self._leftMotor.set_motor_speed(left_motor_speed)
+        self._leftMotor.set_motor_speed(-left_motor_speed)
         self._rightMotor.set_motor_speed(right_motor_speed)
 
     def steer(self, steering_dc):
