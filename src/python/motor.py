@@ -51,7 +51,7 @@ class Motor:
         self._isArmed = False
         self._min_throttle_us = min_throttle_default_us / divider.get(self._protocol, 1)
         self._max_throttle_us = max_throttle_default_us / divider.get(self._protocol, 1)
-        self._center_throttle_us = center_throttle_default_us / divider(self._protocol)
+        self._center_throttle_us = center_throttle_default_us / divider.get(self._protocol, 1)
         self._period_length_us = ((1/self._frequency) * (10 **6))
         self._min_dc = self._min_throttle_us / self._period_length_us * 100
         self._max_dc = self._max_throttle_us / self._period_length_us * 100
