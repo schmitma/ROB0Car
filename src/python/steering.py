@@ -6,6 +6,11 @@ import sys
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
+# Empirically determined center position of steering
+steering_center_pos_us = 1570
+# Empirically determined offset in us for max. steering angle
+steering_offset_us = 175
+
 class Steering:
     '''A servo motor driven by one pin on a Raspberry Pi.'''
 
@@ -31,4 +36,5 @@ class Steering:
 
     def steering_perc2dc(self, steering_perc):
         logging.debug("Steering.steering_perc2dc")
-        return steering_perc * 5 + 1500
+        slope = steering_offset_us / 100
+        return steering_perc * slope + steering_center_pos_us
