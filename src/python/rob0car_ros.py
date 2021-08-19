@@ -17,8 +17,8 @@ class ROB0Car(Node):
 
         super().__init__('ROB0Car')
 
-        self._leftMotor = Motor(4, 50)
-        self._rightMotor = Motor(5, 50)
+        self._leftMotor = Motor(4, 'PWM')
+        self._rightMotor = Motor(5, 'PWM')
         self._steering = Steering(3)
 
         self.close_distance = 0.30 # start slowing down when obstacle within 30 cm is detected

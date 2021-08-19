@@ -8,10 +8,29 @@ import numpy as np
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
+# ESC Protocol settings
+min_throttle_default_us = 1000
+max_throttle_default_us = 2000
+center_throttle_default_us = 1500
+
+frequency_Hz = {
+    'PWM': 200,          # max. frequency: 500 Hz
+    'Oneshot125': 1000,  # max. frequency: 4 kHz
+    'Oneshot42': 4000,   # max. frequency: 12 kHz
+    'Multishot': 8000    # max. frequency: 32 kHz
+}
+
+divider = {
+    'PWM': 1,
+    'Oneshot125': 8,
+    'Oneshot42': 24,
+    'Multishot': 80
+}
+
 class Motor:
     '''A brushless DC motor driven by one pin on a Raspberry Pi.'''
 
-    def __init__ (self, pin, frequency=50):
+    def __init__ (self, pin, protocol='PWM'):
         logging.debug("Motor.__init__")
         #  Configure GPIO
         if os.system ("pgrep pigpiod") != 0:
@@ -20,19 +39,25 @@ class Motor:
 
         self._pi = pigpio.pi()  # Connect to PIGPIO-Daemon
         self._pin = pin
-        self._frequency = frequency
+        self._protocol = protocol
+
+        # pigpio.set_PWM_frequency(): Returns the numerically closest frequency if OK, 
+        # otherwise PI_BAD_USER_GPIO or PI_NOT_PERMITTED.
+        self._frequency = self._pi.set_PWM_frequency(pin, frequency_Hz.get(self._protocol, 200))
+        if self._frequency == pigpio.PI_BAD_USER_GPIO or self._frequency == pigpio.PI_NOT_PERMITTED:
+            sys.exit('No valid frequency!')
+
         self._speed = 0
         self._isArmed = False
-        self._min_throttle_us = 1000
-        self._max_throttle_us = 2000
-        self._center_throttle_us = 1500
+        self._min_throttle_us = min_throttle_default_us / divider.get(self._protocol, 1)
+        self._max_throttle_us = max_throttle_default_us / divider.get(self._protocol, 1)
+        self._center_throttle_us = center_throttle_default_us / divider(self._protocol)
         self._period_length_us = ((1/self._frequency) * (10 **6))
         self._min_dc = self._min_throttle_us / self._period_length_us * 100
         self._max_dc = self._max_throttle_us / self._period_length_us * 100
         self._center_dc = self._center_throttle_us / self._period_length_us * 100
 
         self._pi.set_mode(pin, pigpio.OUTPUT)
-        self._pi.set_PWM_frequency(pin, frequency)
         self._pi.set_PWM_range(pin, 100)  # Control PWM from 0 .. 100 %
         self._pi.set_PWM_dutycycle(self._pin, 0)
 
@@ -63,9 +88,9 @@ class Motor:
         #     self._pi.set_PWM_dutycycle(self._pin, i)
         #     time.sleep(arming_throttle_dc_wait)
 
-        self._pi.set_PWM_dutycycle(self._pin, 10)
+        self._pi.set_PWM_dutycycle(self._pin, self.speedperc2dc(80))
         time.sleep(1)
-        self._pi.set_PWM_dutycycle(self._pin, 3)
+        self._pi.set_PWM_dutycycle(self._pin, self.speedperc2dc(30))
         time.sleep(1)
 
         self._isArmed = True
