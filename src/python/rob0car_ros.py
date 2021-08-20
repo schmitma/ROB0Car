@@ -18,7 +18,7 @@ class ROB0Car(Node):
         super().__init__('ROB0Car')
 
         self._leftMotor = Motor(4, 'PWM')
-        self._rightMotor = Motor(5, 'PWM')
+        self._rightMotor = Motor(5, 'PWM', True)
         self._steering = Steering(3)
 
         self.close_distance = 0.30 # start slowing down when obstacle within 30 cm is detected
@@ -53,14 +53,14 @@ class ROB0Car(Node):
         if right_motor_speed > 0:
             right_motor_speed *= governor
         
-        self._leftMotor.set_motor_speed(-left_motor_speed)
+        self._leftMotor.set_motor_speed(left_motor_speed)
         self._rightMotor.set_motor_speed(right_motor_speed)
 
     def steer(self, steering_dc):
         self._steering.set_steering_dc(steering_dc)
 
     def _joy_callback(self, msg):
-        self._steering.set_steering_perc(msg.axes[0] *  100)
+        self._steering.set_steering_perc(msg.axes[0] * 100)
         motor_speed_perc = msg.axes[1] * 100
         self.drive(motor_speed_perc, motor_speed_perc)
 

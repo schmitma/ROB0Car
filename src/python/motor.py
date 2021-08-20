@@ -30,7 +30,7 @@ divider = {
 class Motor:
     '''A brushless DC motor driven by one pin on a Raspberry Pi.'''
 
-    def __init__ (self, pin, protocol='PWM'):
+    def __init__ (self, pin, protocol='PWM', isInverted=False):
         logging.debug("Motor.__init__")
         #  Configure GPIO
         if os.system ("pgrep pigpiod") != 0:
@@ -48,8 +48,9 @@ class Motor:
             sys.exit('No valid frequency!')
 
         self._speed = 0
-        self._max_speed_perc = 30
+        self._max_speed_perc = 20
         self._isArmed = False
+        self._isInverted = isInverted
         self._min_throttle_us = min_throttle_default_us / divider.get(self._protocol, 1)
         self._max_throttle_us = max_throttle_default_us / divider.get(self._protocol, 1)
         self._center_throttle_us = center_throttle_default_us / divider.get(self._protocol, 1)
@@ -99,6 +100,8 @@ class Motor:
     def set_motor_speed(self, speed):
         logging.debug("Motor.set_motor_speed")
         if not self._isArmed:
-            return    
+            return
+        if self._isInverted:
+            speed *= -1    
         self._pi.set_PWM_dutycycle(self._pin, self.speedperc2dc(speed))
         self._speed = speed
