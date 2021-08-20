@@ -60,7 +60,7 @@ class ROB0Car(Node):
         self._steering.set_steering_dc(steering_dc)
 
     def _joy_callback(self, msg):
-        self._steering.set_steering_perc(msg.axes[0] * 100)
+        self._steering.set_steering_perc(msg.axes[0] * -100)
         motor_speed_perc = msg.axes[1] * 100
         self.drive(motor_speed_perc, motor_speed_perc)
 
