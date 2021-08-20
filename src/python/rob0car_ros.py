@@ -48,8 +48,10 @@ class ROB0Car(Node):
         logging.debug("Distance: " + str(self.distance))
         logging.debug("Governor: " + str(governor))
 
-        left_motor_speed *= governor
-        right_motor_speed *= governor
+        if left_motor_speed > 0:
+            left_motor_speed *= governor
+        if right_motor_speed > 0:
+            right_motor_speed *= governor
         
         self._leftMotor.set_motor_speed(-left_motor_speed)
         self._rightMotor.set_motor_speed(right_motor_speed)
