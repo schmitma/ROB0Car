@@ -20,10 +20,9 @@ for i in range(len(trig)):
 
 def meas_dist(n):
 	logging.debug("meas_dist()")
-    
+
 	# print("Trigger Pin: ", trig[n], 
 	#   "\nEcho Pin: ", echo[n])
-    logging.debug("Trigger")
 	GPIO.output(trig[n], True)
 	time.sleep(0.00001) # 10 Mikrosekunden
 	GPIO.output(trig[n], False)
