@@ -17,7 +17,8 @@ P6 = 0x40
 P7 = 0x80
 
 while True:
-    bus.write_byte(pcf8574_i2c_addr, P0)
+    b = bus.read_byte(pcf8574_i2c_addr, P0)
+    logging.debug(str(b))
     time.sleep(0.5)
     bus.write_byte(pcf8574_i2c_addr, P1)
     time.sleep(0.5)
