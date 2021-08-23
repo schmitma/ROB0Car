@@ -19,7 +19,7 @@ P7 = 0x80
 trig = P0
 echo = P4
 
-bus.write_byte_data(pcf8574_i2c_addr, 0x00)
+bus.write_byte(pcf8574_i2c_addr, 0x00)
 
 # GPIO.setmode(GPIO.BOARD)
 # trig = [11] #, 36]
