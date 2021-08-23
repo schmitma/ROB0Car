@@ -38,24 +38,24 @@ def meas_dist():
     # time.sleep(0.00001) # 10 Mikrosekunden
     # GPIO.output(trig[n], False)
 
-    bus.write_byte_data(pcf8574_i2c_addr, trig)
+    bus.write_byte(pcf8574_i2c_addr, trig)
     time.sleep(0.00001) # 10 us
-    bus.write_byte_data(pcf8574_i2c_addr, trig)
+    bus.write_byte(pcf8574_i2c_addr, 0x00)
     logging.debug("meas_dist()")
 
-    b = bus.read_byte_data(pcf8574_i2c_addr)
+    b = bus.read_byte(pcf8574_i2c_addr)
     logging.debug("Waiting for echo pin to turn HIGH")
     while not (b & echo):
         logging.debug(str(b))
-        b = bus.write_byte_data(pcf8574_i2c_addr)
+        b = bus.read_byte_(pcf8574_i2c_addr)
         pass
     start = time.time()
     
-    b = bus.read_byte_data(pcf8574_i2c_addr, trig)
+    b = bus.read_byte(pcf8574_i2c_addr, trig)
     logging.debug("Waiting for echo pin to turn LOW")
     while (b & echo):
         logging.debug(str(b))
-        b = bus.write_byte_data(pcf8574_i2c_addr, trig)
+        b = bus.read_byte(pcf8574_i2c_addr, trig)
         pass
     end = time.time()
 
