@@ -47,7 +47,7 @@ def meas_dist():
     logging.debug("Waiting for echo pin to turn HIGH")
     while not (b & echo):
         logging.debug(str(b))
-        b = bus.read_byte_(pcf8574_i2c_addr)
+        b = bus.read_byte(pcf8574_i2c_addr)
         pass
     start = time.time()
     
