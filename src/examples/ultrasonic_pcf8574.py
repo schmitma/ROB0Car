@@ -45,7 +45,7 @@ def meas_dist():
 
     b = bus.read_byte(pcf8574_i2c_addr)
     logging.debug("Waiting for echo pin to turn HIGH")
-    while not (b & echo):
+    while (b & echo) == 0x00:
         logging.debug(str(b))
         b = bus.read_byte(pcf8574_i2c_addr)
         pass
@@ -53,7 +53,7 @@ def meas_dist():
     
     b = bus.read_byte(pcf8574_i2c_addr, trig)
     logging.debug("Waiting for echo pin to turn LOW")
-    while (b & echo):
+    while (b & echo) == echo:
         logging.debug(str(b))
         b = bus.read_byte(pcf8574_i2c_addr, trig)
         pass
