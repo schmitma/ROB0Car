@@ -37,17 +37,17 @@ def meas_dist(sensor_flag):
     logging.debug("meas_dist()")
 
     state = get(GPIOB)
-    logging.debug("Waiting for echo pin to turn HIGH")
+    logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
     while (state & sensor_flag) == 0x00:
-        logging.debug(str(state))
+        logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
         state = get(GPIOB)
         pass
     start = time.time()
     
     state = get(GPIOB)
-    logging.debug("Waiting for echo pin to turn LOW")
+    logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
     while (state & GPIOB) == GPIOB:
-        logging.debug(str(state))
+        logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
         state = get(GPIOB)
         pass
     end = time.time()
