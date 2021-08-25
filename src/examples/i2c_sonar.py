@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # i2c_sonar.py
 # 2016-03-24
@@ -105,10 +105,12 @@ class sensor:
 
       m1 = pi.i2c_read_byte_data(self._h, sensor.IOCON1)
       m2 = pi.i2c_read_byte_data(self._h, sensor.IOCON2)
+      print(f"State of IOCON1 {hex(sensor.IOCON1)}: {hex(m1)}")
+      print(f"State of IOCON2 {hex(sensor.IOCON2)}: {hex(m2)}")
 
       if (m1 != sensor.MODE) or (m2 != sensor.MODE):
-
          # Initialise to BANK + SEQOP
+         print(f"Setting Register IOCON {hex(sensor.IOCON)} to: {hex(sensor.MODE)}")
          pi.i2c_write_byte_data(self._h, sensor.IOCON, sensor.MODE)
 
       # Initialise A as inputs, B as outputs.
