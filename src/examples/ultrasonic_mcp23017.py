@@ -46,7 +46,7 @@ def meas_dist(sensor_flag):
     
     state = get(GPIOB)
     logging.debug("Waiting for echo pin to turn LOW")
-    while (b & GPIOB) == GPIOB:
+    while (state & GPIOB) == GPIOB:
         logging.debug(str(state))
         state = get(GPIOB)
         pass
