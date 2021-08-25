@@ -198,7 +198,7 @@ class sensor:
             end = time.time()
         
             distance = ((end - start) * 34300) / 2
-            print("Distance: ", distance, " cm")
+            print("Distance of sensor ", ranger, ": ", distance, " cm")
             return distance
         
     def cancel(self):
@@ -229,8 +229,9 @@ if __name__ == "__main__":
 
     while time.time() < stop:
         v = s.read(0) # 0 is ranger 0 (connected to A0/B0).
-        r = round(v,1)
-        print(r)
+        time.sleep(0.1)
+
+        v = s.read(1) # 1 is ranger 1 (connected to A1/B1).
         time.sleep(0.1)
 
     s.cancel()
