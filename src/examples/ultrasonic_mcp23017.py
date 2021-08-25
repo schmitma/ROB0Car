@@ -30,10 +30,10 @@ set(IODIRB, 0xFF)
 
 def meas_dist(sensor_flag):
     logging.debug("meas_dist()")
-    
+
     set(OLATA, sensor_flag)
     time.sleep(0.00001) # 10 us
-    bus.write_byte(pcf8574_i2c_addr, 0x00)
+    set(OLATA, 0x00)
     logging.debug("meas_dist()")
 
     state = get(GPIOB)
@@ -57,5 +57,5 @@ def meas_dist(sensor_flag):
     return distance
 
 while True:
-    meas_dist()
+    meas_dist(ULTRASONIC_FRONT_LEFT)
     time.sleep(0.5)
