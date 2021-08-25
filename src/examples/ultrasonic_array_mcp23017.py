@@ -173,34 +173,34 @@ class sensor:
             return self._micros * sensor.MICS2CMS
 
         else:
+            logging.debug("meas_dist()")
+
             #  Send a 10us pulse
-            logging.debug(f'Sending 10 us trigger pulse on sensor: {hex(1<<ranger)}')
+            logging.debug(f'Sending 10 us trigger pulse on GPIOA: {hex(1<<ranger)}')
             self.pi.i2c_write_byte_data(self._h, sensor.GPIOA, 1<<ranger)
             time.sleep (0.00001)
             self.pi.i2c_write_byte_data(self._h, sensor.GPIOA, 0x00)
-
-            #  Wait for echo to go high, then low
-            StartTime = time.time()
+            
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
             logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
-            while (state & 1<<ranger) == 0:
+            while (state & (1<<ranger)) == 0:
+                state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
                 logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
-                state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-                StartTime = time.time()
-
-            StopTime = time.time()
+                pass
+            start = time.time()
+        
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-            logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
-            while (state & 1<<ranger) == 1<<ranger:
+            logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+            while (state & (1<<ranger)) == (1<<ranger):
                 state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-                logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
-                StopTime = time.time()
-
-            elapsed_time = StopTime - StartTime
-            meas_dist = elapsed_time * self.SPEED_OF_SOUND / 2
-            logging.debug(f'Measured distance: {meas_dist}')
-            return meas_dist
-
+                logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+                pass
+            end = time.time()
+        
+            distance = ((end - start) * 34300) / 2
+            print("Distance: ", distance, " cm")
+            return distance
+        
     def cancel(self):
         """
         Cancels the ultrasonic sensors and releases resources.
