@@ -106,6 +106,7 @@ class sensor:
         # According to MCP23017 datasheet (see https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf)
         # a GPIO is defined as input if the corresponding bit is set to 1
         pi.i2c_write_byte_data(self._h, sensor.IODIRA, 0x00) # A is ouputs.
+        pi.i2c_write_byte_data(self._h, sensor.GPIOA, 0x00)
         pi.i2c_write_byte_data(self._h, sensor.IODIRB, 0xFF) # B is inputs.
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
@@ -194,14 +195,11 @@ class sensor:
                 state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
                 logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
                 StopTime = time.time()
-                if StopTime - StartTime >= 0.04:
-                    StopTime = StartTime
-                    break
 
             elapsed_time = StopTime - StartTime
-        meas_dist = elapsed_time * self.SPEED_OF_SOUND / 2
-        logging.debug(f'Measured distance: {meas_dist}')
-        return meas_dist
+            meas_dist = elapsed_time * self.SPEED_OF_SOUND / 2
+            logging.debug(f'Measured distance: {meas_dist}')
+            return meas_dist
 
     def cancel(self):
         """
