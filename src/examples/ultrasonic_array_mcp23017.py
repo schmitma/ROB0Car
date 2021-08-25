@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import time
-import pigpio # http://abyz.co.uk/rpi/pigpio/python.html
+import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 
 class sensor:
 
@@ -162,11 +162,11 @@ class sensor:
             self._reading = False
 
             count, data = self.pi.i2c_zip(self._h, 
-                [7, 2, sensor.GPINTENA, 1<<ranger, # Interrupt on ranger.
-                 7, 1, sensor.GPIOA,                    # Clear interrupts.
+                [7, 2, sensor.GPINTENA, 1<<ranger, # Interrupt on sensor.
+                 7, 1, sensor.GPIOA,               # Clear interrupts.
                  6, 1,
                  7, 3, sensor.GPIOB, 1<<ranger, 0, # Send trigger.
-                 7, 1, sensor.GPIOA,                    # Consume interrupt.
+                 7, 1, sensor.GPIOA,               # Consume interrupt.
                  6, self._trigger_gap])
 
             timeout = time.time() + self._timeout
@@ -180,11 +180,13 @@ class sensor:
         else:
             # Send trigger on A then do multiple sequential reads of B.
             count, data = self.pi.i2c_zip(self._h, 
-                [7, 3, sensor.GPIOA, 1<<ranger, 0,
+                [7, 3, sensor.GPIOA, 1<<ranger, 0,      # Trigger sensor
                  7, 1, sensor.GPIOB,
                  1,
                  6, self._bytes_lsb, self._bytes_msb])
 
+            print(str(count) + '\n' + str(data))
+            
             if (data[0] & (1<<ranger)) == 0: # Ignore data if trigger start missed.
                 f = False
                 for i in range(count):
