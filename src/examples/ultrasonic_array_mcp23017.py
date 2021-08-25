@@ -2,6 +2,7 @@
 
 import time
 import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
+import sys
 import logging
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
