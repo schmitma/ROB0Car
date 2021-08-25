@@ -182,18 +182,18 @@ class sensor:
             self.pi.i2c_write_byte_data(self._h, sensor.GPIOA, 0x00)
             
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-            logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+            logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
             while (state & (1<<ranger)) == 0:
                 state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-                logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+                logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
                 pass
             start = time.time()
         
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-            logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+            logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
             while (state & (1<<ranger)) == (1<<ranger):
                 state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
-                logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+                logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
                 pass
             end = time.time()
         
