@@ -181,6 +181,7 @@ class sensor:
             #  Wait for echo to go high, then low
             StartTime = time.time()
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
+            logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
             while (state & 1<<ranger) == 0:
                 logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
                 state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
@@ -188,7 +189,9 @@ class sensor:
 
             StopTime = time.time()
             state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
+            logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
             while (state & 1<<ranger) == 1<<ranger:
+                state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
                 logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
                 StopTime = time.time()
                 if StopTime - StartTime >= 0.04:
@@ -196,8 +199,9 @@ class sensor:
                     break
 
             elapsed_time = StopTime - StartTime
-
-        return elapsed_time * self.SPEED_OF_SOUND / 2
+        meas_dist = elapsed_time * self.SPEED_OF_SOUND / 2
+        logging.debug(f'Measured distance: {meas_dist}')
+        return meas_dist
 
     def cancel(self):
         """
