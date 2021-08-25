@@ -104,8 +104,8 @@ class sensor:
       # Check to see if already initialised.
 
       m1 = pi.i2c_read_byte_data(self._h, sensor.IOCON1)
-      m2 = pi.i2c_read_byte_data(self._h, sensor.IOCON2)
       print(f"State of IOCON1 {hex(sensor.IOCON1)}: {hex(m1)}")
+      m2 = pi.i2c_read_byte_data(self._h, sensor.IOCON2)
       print(f"State of IOCON2 {hex(sensor.IOCON2)}: {hex(m2)}")
 
       if (m1 != sensor.MODE) or (m2 != sensor.MODE):

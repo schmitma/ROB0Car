@@ -2,6 +2,9 @@
 
 import time
 import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
+import logging
+
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 class sensor:
 
@@ -40,18 +43,8 @@ class sensor:
     IOCONA=0x0A
     IOCONB=0x0B
 
-    GPIOA=9
-    GPIOB=25
-
-    GPINTENA=2
-    DEFVALA=3
-    INTCONA=4
-
-    BANK=(1<<7)
-    SEQOP=(1<<5)
-    INTPOL=(1<<1)
-
-    MODE = BANK + SEQOP + INTPOL
+    GPIOA=0x12
+    GPIOB=0x13
     
     # Value of TRIGGER_GAP has to be changed if interrupt-driven
     # mode is used and sensor values are incorrect.
@@ -96,14 +89,14 @@ class sensor:
 
         self._h = pi.i2c_open(i2c_bus, addr)
 
-        # Check to see if already initialised.
-        mode_bank_a = pi.i2c_read_byte_data(self._h, sensor.IOCONA)
-        mode_bank_b = pi.i2c_read_byte_data(self._h, sensor.IOCONB)
+        # # Check to see if already initialised.
+        # mode_bank_a = pi.i2c_read_byte_data(self._h, sensor.IOCONA)
+        # mode_bank_b = pi.i2c_read_byte_data(self._h, sensor.IOCONB)
 
-        if (mode_bank_a != sensor.MODE) or (mode_bank_b != sensor.MODE):
-            # Initialise to BANK + SEQOP
-            pi.i2c_write_byte_data(self._h, sensor.IOCONA, sensor.MODE)
-            pi.i2c_write_byte_data(self._h, sensor.IOCONB, sensor.MODE)
+        # if (mode_bank_a != sensor.MODE) or (mode_bank_b != sensor.MODE):
+        #     # Initialise to BANK + SEQOP
+        #     pi.i2c_write_byte_data(self._h, sensor.IOCONA, sensor.MODE)
+        #     pi.i2c_write_byte_data(self._h, sensor.IOCONB, sensor.MODE)
 
         # Initialise A as outputs, B as inputs.
 
@@ -178,27 +171,32 @@ class sensor:
             return self._micros * sensor.MICS2CMS
 
         else:
-            # Send trigger on A then do multiple sequential reads of B.
-            count, data = self.pi.i2c_zip(self._h, 
-                [7, 3, sensor.GPIOA, 1<<ranger, 0,      # Trigger sensor
-                 7, 1, sensor.GPIOB,
-                 1,
-                 6, self._bytes_lsb, self._bytes_msb])
+            #  Send a 10us pulse
+            logging.debug(f'Sending 10 us trigger pulse on sensor: {hex(1<<ranger)}')
+            self.pi.i2c_write_byte_data(self._h, sensor.GPIOA, 1<<ranger)
+            time.sleep (0.00001)
+            self.pi.i2c_write_byte_data(self._h, sensor.GPIOA, 0x00)
 
-            print(str(count) + '\n' + str(data))
-            
-            if (data[0] & (1<<ranger)) == 0: # Ignore data if trigger start missed.
-                f = False
-                for i in range(count):
-                    v = data[i] & (1<<ranger) # Mask off all but echo bit.
-                    if f:
-                        if not v:
-                            return i * self._bus_byte_micros * sensor.MICS2CMS
-                            break
-                    else:
-                        if v:
-                            f = True
-            return sensor.INVALID_READING
+            #  Wait for echo to go high, then low
+            StartTime = time.time()
+            state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
+            while (state & 1<<ranger) == 0:
+                logging.debug(f'Waiting for echo pin to turn HIGH: {hex(state)}')
+                state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
+                StartTime = time.time()
+
+            StopTime = time.time()
+            state = self.pi.i2c_read_byte_data(self._h, sensor.GPIOB)
+            while (state & 1<<ranger) == 1<<ranger:
+                logging.debug(f'Waiting for echo pin to turn LOW: {hex(state)}')
+                StopTime = time.time()
+                if StopTime - StartTime >= 0.04:
+                    StopTime = StartTime
+                    break
+
+            elapsed_time = StopTime - StartTime
+
+        return elapsed_time * self.SPEED_OF_SOUND / 2
 
     def cancel(self):
         """
