@@ -216,7 +216,7 @@ class HCSR04Cluster:
         """
         # Assume MCP23017 is in banking mode, i.e. IOCON.BANK = 1 and read 
         # state of IOCON configuration register (ADDR 0x05).
-        iocon1_state = pi.i2c_read_byte_data(self._h, 
+        iocon1_state = self.pi.i2c_read_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IOCON1"][1])
         
         # Clear bit 7 of IOCON configuration register and write value back.
@@ -226,11 +226,14 @@ class HCSR04Cluster:
         # the defined state IOCON.BANK = 0 an can be set according to the
         # value of the class attribute.
         iocon1_state &= ~BANK
-        pi.i2c_write_byte_data(self._h, 
+        self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IOCON1"][1], 
             iocon1_state)
 
         iocon1_state |= self._BANKING_MODE_IS_ACTIVE * BANK
+        self.pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["IOCON1"][1], 
+            iocon1_state)
 
     def _cbf(self, gpio, level, tick):
         """
