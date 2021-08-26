@@ -163,24 +163,20 @@ class HCSR04Cluster:
         self._h = pi.i2c_open(i2c_channel, i2c_addr)
         self._set_banking_mode()
 
-        # # Check to see if already initialised.
-        # mode_bank_a = pi.i2c_read_byte_data(self._h, sensor.IOCONA)
-        # mode_bank_b = pi.i2c_read_byte_data(self._h, sensor.IOCONB)
-
-        # if (mode_bank_a != sensor.MODE) or (mode_bank_b != sensor.MODE):
-        #     # Initialise to BANK + SEQOP
-        #     pi.i2c_write_byte_data(self._h, sensor.IOCONA, sensor.MODE)
-        #     pi.i2c_write_byte_data(self._h, sensor.IOCONB, sensor.MODE)
-
         # Initialise A as outputs, B as inputs.
-
         # A is used for the trigger.
         # B is used for the echo.
         # According to MCP23017 datasheet (see https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf)
         # a GPIO is defined as input if the corresponding bit is set to 1
-        pi.i2c_write_byte_data(self._h, HCSR04Cluster.IODIRA, 0x00) # A is ouputs.
-        pi.i2c_write_byte_data(self._h, HCSR04Cluster.GPIOA, 0x00)
-        pi.i2c_write_byte_data(self._h, HCSR04Cluster.IODIRB, 0xFF) # B is inputs.
+        pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["IODIRA"][self._BANKING_MODE_IS_ACTIVE], 
+            0x00) # A is ouputs.
+        pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
+            0x00)
+        pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["IODIRA"][self._BANKING_MODE_IS_ACTIVE], 
+            0xFF) # B is inputs.
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
 
@@ -336,7 +332,7 @@ if __name__ == "__main__":
         exit(0)
 
     s = ultrasonic_array_mcp23017.HCSR04Cluster(pi, 
-        BANKING_MODE_IS_ACTIVE = 0)
+        BANKING_MODE_IS_ACTIVE = 1)
 
     stop = time.time() + TIME
 
