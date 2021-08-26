@@ -108,6 +108,10 @@ class HCSR04Cluster:
 
     GPIOA=0x12
     GPIOB=0x13
+
+    GPINTENA=0x02
+    DEFVALA=0x03
+    INTCONA=0x04
     
     # Value of TRIGGER_GAP has to be changed if interrupt-driven
     # mode is used and sensor values are incorrect.
@@ -124,7 +128,7 @@ class HCSR04Cluster:
                  i2c_addr = MCP23017_I2C_ADDR, 
                  i2c_channel = 1, 
                  INTA_GPIO = None,
-                 BANKINK_MODE_IS_ACTIVE = 0,
+                 BANKING_MODE_IS_ACTIVE = 0,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
         """
@@ -147,7 +151,7 @@ class HCSR04Cluster:
         self.pi = pi
         self._cb = None
         self._INTA_GPIO = INTA_GPIO
-        self._BANKING_MODE_IS_ACTIVE = BANKINK_MODE_IS_ACTIVE
+        self._BANKING_MODE_IS_ACTIVE = BANKING_MODE_IS_ACTIVE
 
         self._timeout = (2.0 * max_range_cm / 100.0) / HCSR04Cluster.SPEED_OF_SOUND
 
