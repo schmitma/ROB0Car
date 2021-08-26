@@ -151,6 +151,8 @@ class sensor:
       Each edge of the echo pin creates an interrupt and thus a rising
       edge on the interrupt pin.
       """
+      # How to determine which gpio of mcp23017 has changed?
+      # Maybe save register state and compare on every interrupt?
       if self._edge == 1:
          self._tick = tick
       elif self._edge == 2:

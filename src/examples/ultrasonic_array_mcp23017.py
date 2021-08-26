@@ -10,7 +10,7 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 # TODO:
 # - Use Banking mode -> implement Dictionary to switch between register address mapping
 # - Use interrupts
-# - Improve performance using parallelism
+# - Improve performance using parallelism -> check if parallelism improves speed since steps have to be carried out sequentially?
 # - Apply coding guidelines, e.g. PEP8
 
 MCP23017_I2C_ADDR = 0x27
@@ -62,6 +62,14 @@ MCP23017_REGISTER_MAPPING = {
 BANK   = (1<<7)
 SEQOP  = (1<<5)
 INTPOL = (1<<1)
+
+class HCSR04:
+    def __init__(self, pos, gpio):
+        # Maybe define position in coordinates?
+        # x, y, z from center + angular orientation?
+        self.position = pos
+        self.gpio_assignment = gpio
+        self.distance_cm = 0
 
 class HCSR04Cluster:
 
@@ -152,6 +160,15 @@ class HCSR04Cluster:
         self._cb = None
         self._INTA_GPIO = INTA_GPIO
         self._BANKING_MODE_IS_ACTIVE = BANKING_MODE_IS_ACTIVE
+        
+        self.sensors = [HCSR04("FRONT_RIGHT", 0),
+                        HCSR04("FRONT_MIDDLE", 1)]#,
+                        #HCSR04("FRONT_LEFT", 2),
+                        #HCSR04("LEFT", 3),
+                        #HCSR04("REAR_LEFT", 4),
+                        #HCSR04("REAR_MIDDLE", 5),
+                        #HCSR04("REAR_RIGHT", 6),
+                        #HCSR04("RIGHT", 7)]
 
         self._timeout = (2.0 * max_range_cm / 100.0) / HCSR04Cluster.SPEED_OF_SOUND
 
@@ -228,7 +245,7 @@ class HCSR04Cluster:
 
         iocon1_state |= self._BANKING_MODE_IS_ACTIVE * BANK
         self.pi.i2c_write_byte_data(self._h, 
-            MCP23017_REGISTER_MAPPING["IOCON1"][1], 
+            MCP23017_REGISTER_MAPPING["IOCON1"][0], 
             iocon1_state)
 
     def _cbf(self, gpio, level, tick):
@@ -236,6 +253,8 @@ class HCSR04Cluster:
         Each edge of the echo pin creates an interrupt and thus a rising
         edge on the interrupt pin.
         """
+        # How to determine which gpio of mcp23017 has changed?
+        # Maybe save register state and compare on every interrupt?
         if self._edge == 1:
             self._tick = tick
         elif self._edge == 2:
@@ -243,6 +262,19 @@ class HCSR04Cluster:
             self._micros = diff
             self._reading = True
         self._edge += 1
+    
+    def trigger_measurement(self):
+        logging.debug("HCSR04Cluster.trigger_measurement()")
+        register_value = sum([1 << x.gpio_assignment for x in self.sensors])
+        #  Send a 10us pulse
+        logging.debug(f'Sending 10 us trigger pulse on GPIOA: {hex(register_value)}')
+        self.pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
+            register_value)
+        time.sleep (0.00001)
+        self.pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
+            0x00)
 
     def read(self, ranger):
         """
@@ -255,7 +287,9 @@ class HCSR04Cluster:
         if self._INTA_GPIO is not None:
             self._edge = 1
             self._reading = False
-
+            
+            # This construct is absolutely not readable... don't use it
+            # unless it achieves significant performance improvements!
             count, data = self.pi.i2c_zip(self._h, 
                 [7, 2, HCSR04Cluster.GPINTENA, 1<<ranger, # Interrupt on sensor.
                  7, 1, HCSR04Cluster.GPIOA,               # Clear interrupts.
