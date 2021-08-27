@@ -302,6 +302,8 @@ class HCSR04Cluster:
         affected_sensors = [m.start() for m in re.finditer("1", str(bin(state_diff))[::-1])]
 
         for i in range(0, len(affected_sensors)):
+            # Determine edge by comparing the binary string representation of
+            # old and new state for corresponding sensor index
             if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 0 and 
                 str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 1):
                 # Rising edge of echo signal detected
