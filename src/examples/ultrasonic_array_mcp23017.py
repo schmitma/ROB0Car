@@ -4,6 +4,7 @@ import time
 import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 import sys
 import logging
+import re
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -12,6 +13,13 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 # - Use interrupts
 # - Improve performance using parallelism -> check if parallelism improves speed since steps have to be carried out sequentially?
 # - Apply coding guidelines, e.g. PEP8
+
+# General process for interrupt driven operation
+# 1. Trigger all sensors by setting all bits of GPIOA register to high
+# 2. If interrupt occurs determine sensors for which echo signal has changed
+#    by comparing old and new state of GPIOB register
+# 3. If rising edge has been detected save start time
+# 4. If falling edge has been detected save stop time and calculate distance
 
 MCP23017_I2C_ADDR = 0x27
 
@@ -135,7 +143,9 @@ class HCSR04Cluster:
     def __init__(self, pi, 
                  i2c_addr = MCP23017_I2C_ADDR, 
                  i2c_channel = 1, 
-                 INTA_GPIO = None,
+                 # Interrupt based operation is enabled if a GPIO to process
+                 # the interrupt signal is supplied.
+                 INT_GPIO = None,
                  BANKING_MODE_IS_ACTIVE = 0,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
@@ -158,7 +168,7 @@ class HCSR04Cluster:
 
         self.pi = pi
         self._cb = None
-        self._INTA_GPIO = INTA_GPIO
+        self._INTA_GPIO = INT_GPIO
         self._BANKING_MODE_IS_ACTIVE = BANKING_MODE_IS_ACTIVE
         
         self.sensors = [HCSR04("FRONT_RIGHT", 0),
@@ -169,6 +179,9 @@ class HCSR04Cluster:
                         #HCSR04("REAR_MIDDLE", 5),
                         #HCSR04("REAR_RIGHT", 6),
                         #HCSR04("RIGHT", 7)]
+        
+        self.number_of_sensors = len(self.sensors)
+        self.sensor_bitmask = sum([1 << x.gpio_assignment for x in self.sensors])
 
         self._timeout = (2.0 * max_range_cm / 100.0) / HCSR04Cluster.SPEED_OF_SOUND
 
@@ -197,19 +210,40 @@ class HCSR04Cluster:
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
 
-        if INTA_GPIO is not None:
-            pi.i2c_write_byte_data(self._h, HCSR04Cluster.GPINTENA, 0x00) # Disable.
-            pi.i2c_write_byte_data(self._h, HCSR04Cluster.DEFVALA, 0x00)  # N/A.
-            pi.i2c_write_byte_data(self._h, HCSR04Cluster.INTCONA, 0x00)  # On change.
+        if INT_GPIO is not None:
+            # The GPINTEN register controls the interrupt-on-change feature
+            # for each pin.  If a bit is set, the corresponding pin is enabled
+            # for interrupt-on-change. Therefore, the bits of the GPINTENB
+            # register for the installed sensors are set to 1.
+            pi.i2c_write_byte_data(self._h,
+                MCP23017_REGISTER_MAPPING["GPINTENB"][self._BANKING_MODE_IS_ACTIVE],
+                self.sensor_bitmask)
+            # The INTCON register controls how the associated pin value is
+            # compared for the interrupt-on-change feature.  If a bit is set,
+            # the corresponding I/O pin is compared against the associated bit
+            # in the DEFVAL register.  If a bit value is clear, the 
+            # corresponding I/O pin is compared against the previous value.
+            # Since in this application an interrupt is to be triggered when
+            # the echo signal of the corresponding sensor goes high or low,
+            # the interrupt is configured to on-change.  Therefore the bits 
+            # of the INTCONB register for the installed sensors are set to 0.
+            pi.i2c_write_byte_data(self._h,
+                MCP23017_REGISTER_MAPPING["INTCONB"][self._BANKING_MODE_IS_ACTIVE],
+                0x00)
+            # Since interrupt-on-change is configured, the DEFVALB register is set
+            # to 0x00.
+            pi.i2c_write_byte_data(self._h,
+                MCP23017_REGISTER_MAPPING["DEFVALB"][self._BANKING_MODE_IS_ACTIVE],
+                0x00)
 
-            pi.set_mode(INTA_GPIO, pigpio.INPUT)
+            pi.set_mode(INT_GPIO, pigpio.INPUT)
 
-            self._cb = pi.callback(INTA_GPIO, pigpio.RISING_EDGE, self._cbf)
-
-            self._tick = None
-            self._edge = 3
+            self._cb = pi.callback(INT_GPIO, pigpio.RISING_EDGE, self._cbf)
+            self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+            self._tick = [None] * self.number_of_sensors
             self._micros = 0
-            self._reading = False
+            self._interrupt_processed = [False] * self.number_of_sensors
 
             self._trigger_gap = int(HCSR04Cluster.TRIGGER_GAP / self._bus_byte_micros)-1
         else:
@@ -255,14 +289,47 @@ class HCSR04Cluster:
         """
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
+        # Since a read acces to the register happens here the interrupt is 
+        # already consumed!
+        GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+        
+        state_diff = self.GPIOB_state ^ GPIOB_new_state
+        
+        # For all 1's in result which indicate a state change of the echo
+        # signal process corresponding change
+        # Treat state diff. bitmask as string and return indizes of 1's
+        affected_sensors = [m.start() for m in re.finditer("1", str(bin(state_diff))[::-1])]
+
+        for i in range(0, len(affected_sensors)):
+            if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 0 and 
+                str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 1):
+                # Rising edge of echo signal detected
+                self._tick[affected_sensors[i]] = tick
+            elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 1 and 
+                str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
+                # Falling edge of echo signal detected
+                diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
+                self._interrupt_processed[affected_sensors[i]] = True
+            else:
+                return -1
+
+        self.GPIOB_state = GPIOB_new_state
+        
+
+
         if self._edge == 1:
             self._tick = tick
         elif self._edge == 2:
             diff = pigpio.tickDiff(self._tick, tick)
             self._micros = diff
-            self._reading = True
+            self._interrupt_processed = True
         self._edge += 1
     
+    def measure_distance(self):
+        self.trigger_measurement()
+
+
     def trigger_measurement(self):
         logging.debug("HCSR04Cluster.trigger_measurement()")
         register_value = sum([1 << x.gpio_assignment for x in self.sensors])
@@ -286,7 +353,7 @@ class HCSR04Cluster:
         """
         if self._INTA_GPIO is not None:
             self._edge = 1
-            self._reading = False
+            self._interrupt_processed = False
             
             # This construct is absolutely not readable... don't use it
             # unless it achieves significant performance improvements!
@@ -299,7 +366,7 @@ class HCSR04Cluster:
                  6, self._trigger_gap])
 
             timeout = time.time() + self._timeout
-            while not self._reading:
+            while not self._interrupt_processed:
                 if time.time() > timeout:
                     return HCSR04Cluster.INVALID_READING
                 time.sleep(0.01)
@@ -342,6 +409,22 @@ class HCSR04Cluster:
             distance = ((end - start) * 34300) / 2
             print("Distance of sensor ", ranger, ": ", distance, " cm")
             return distance
+    
+    def _is_is_power_of_two(self, n):
+        # A utility function to check whether n is power of 2 or not.
+        return (True if(n > 0 and ((n & (n - 1)) > 0))
+                     else False)
+
+    def _bitmask_to_sensor_idzs(self, bitmask):
+        # Precondition: Only one bit is set
+        if bin(bitmask).count("1") > 1 or self._is_is_power_of_two(bitmask) is not True:
+            return -1
+        else:
+            idx = 0
+            while bitmask is not 1:
+                bitmask >>= 1
+                idx +=1
+            return idx
         
     def cancel(self):
         """
