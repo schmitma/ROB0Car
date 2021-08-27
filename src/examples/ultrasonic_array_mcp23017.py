@@ -419,6 +419,9 @@ class HCSR04Cluster:
 
     def _bitmask_to_sensor_idzs(self, bitmask):
         # Precondition: Only one bit is set
+        # Determine sensor index by right shifting bitmask until value is
+        # equal to 1.  The number of the necessary bit shifts is equal to 
+        # the sensor index.
         if bin(bitmask).count("1") > 1 or self._is_is_power_of_two(bitmask) is not True:
             return -1
         else:
