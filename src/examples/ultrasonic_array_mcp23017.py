@@ -240,7 +240,6 @@ class HCSR04Cluster:
             self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
             self._tick = [None] * self.number_of_sensors
-            self._micros = 0
             self._interrupt_processed = [False] * self.number_of_sensors
 
             self._trigger_gap = int(HCSR04Cluster.TRIGGER_GAP / self._bus_byte_micros)-1
@@ -429,7 +428,8 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(BANKING_MODE_IS_ACTIVE = 1)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(BANKING_MODE_IS_ACTIVE = 1,
+                                                INTB_GPIO = 14)
 
     stop = time.time() + TIME
 
