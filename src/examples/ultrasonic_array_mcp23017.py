@@ -295,6 +295,10 @@ class HCSR04Cluster:
         
         state_diff = self.GPIOB_state ^ GPIOB_new_state
         
+        logging.debug(f'GPIOB state: {bin(self.GPIOB_state)}')
+        logging.debug(f'GPIOB new state: {bin(GPIOB_new_state)}')
+        logging.debug(f'GPIOB state diff: {bin(state_diff)}')
+
         # For all 1's in result which indicate a state change of the echo
         # signal process corresponding change
         # Treat state diff. bitmask as string and return indizes of 1's
@@ -306,10 +310,12 @@ class HCSR04Cluster:
             if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 0 and 
                 str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 1):
                 # Rising edge of echo signal detected
+                logging.debug(f'Rising edge of echo signal of sensor {i} detected.')
                 self._tick[affected_sensors[i]] = tick
             elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 1 and 
                 str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
                 # Falling edge of echo signal detected
+                logging.debug(f'Falling edge of echo signal of sensor {i} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
                 self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
                 self._interrupt_processed[affected_sensors[i]] = True
@@ -356,6 +362,9 @@ class HCSR04Cluster:
             while not all(self._interrupt_processed):
                 #if time.time() > timeout:
                 #    return HCSR04Cluster.INVALID_READING
+                GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
                 pass
 
             return
