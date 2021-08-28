@@ -8,6 +8,9 @@ import re
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
+# Resources:
+# - MCP23017 datasheet: https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf
+
 # TODO:
 # - Use Banking mode -> implement Dictionary to switch between register address mapping
 # - Use interrupts
@@ -109,13 +112,7 @@ class HCSR04Cluster:
     # mode isn't used then only half the accuracy will be achieved.
 
     MCP23017_I2C_ADDR = 0x27
-    
-    IOCONA=0x0A
-    IOCONB=0x0B
-
-    GPIOA=0x12
-    GPIOB=0x13
-    
+       
     IODIRA=0x00
     IODIRB=0x01
 
@@ -140,12 +137,12 @@ class HCSR04Cluster:
 
     INVALID_READING=9999.0
 
-    def __init__(self, pi, 
+    def __init__(self,
                  i2c_addr = MCP23017_I2C_ADDR, 
                  i2c_channel = 1, 
                  # Interrupt based operation is enabled if a GPIO to process
                  # the interrupt signal is supplied.
-                 INT_GPIO = None,
+                 INTB_GPIO = None,
                  BANKING_MODE_IS_ACTIVE = 0,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
@@ -165,10 +162,13 @@ class HCSR04Cluster:
         Optionally the sensors maximum range in centimetres may
         be specified (default: 450).
         """
+        self.pi=pigpio.pi() # Connect to local Pi.
 
-        self.pi = pi
+        if not self.pi.connected:
+            exit(0)
+
         self._cb = None
-        self._INTA_GPIO = INT_GPIO
+        self._INTB_GPIO = INTB_GPIO
         self._BANKING_MODE_IS_ACTIVE = BANKING_MODE_IS_ACTIVE
         
         self.sensors = [HCSR04("FRONT_RIGHT", 0),
@@ -190,32 +190,30 @@ class HCSR04Cluster:
         elif self._timeout > 0.05:
             self._timeout = 0.05
 
-        self._h = pi.i2c_open(i2c_channel, i2c_addr)
+        self._h = self.pi.i2c_open(i2c_channel, i2c_addr)
         self._set_banking_mode()
 
-        # Initialise A as outputs, B as inputs.
-        # A is used for the trigger.
-        # B is used for the echo.
-        # According to MCP23017 datasheet (see https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf)
-        # a GPIO is defined as input if the corresponding bit is set to 1
-        pi.i2c_write_byte_data(self._h, 
+        # Initialise MCP23017 port A as outputs (trigger signal), B as inputs 
+        # (echo signal).  According to MCP23017 datasheet a GPIO is defined as
+        # input if the corresponding bit is set to 1
+        self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IODIRA"][self._BANKING_MODE_IS_ACTIVE], 
             0x00) # A is ouputs.
-        pi.i2c_write_byte_data(self._h, 
+        self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
             0x00)
-        pi.i2c_write_byte_data(self._h, 
+        self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IODIRA"][self._BANKING_MODE_IS_ACTIVE], 
             0xFF) # B is inputs.
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
 
-        if INT_GPIO is not None:
+        if INTB_GPIO is not None:
             # The GPINTEN register controls the interrupt-on-change feature
             # for each pin.  If a bit is set, the corresponding pin is enabled
             # for interrupt-on-change. Therefore, the bits of the GPINTENB
             # register for the installed sensors are set to 1.
-            pi.i2c_write_byte_data(self._h,
+            self.pi.i2c_write_byte_data(self._h,
                 MCP23017_REGISTER_MAPPING["GPINTENB"][self._BANKING_MODE_IS_ACTIVE],
                 self.sensor_bitmask)
             # The INTCON register controls how the associated pin value is
@@ -227,18 +225,18 @@ class HCSR04Cluster:
             # the echo signal of the corresponding sensor goes high or low,
             # the interrupt is configured to on-change.  Therefore the bits 
             # of the INTCONB register for the installed sensors are set to 0.
-            pi.i2c_write_byte_data(self._h,
+            self.pi.i2c_write_byte_data(self._h,
                 MCP23017_REGISTER_MAPPING["INTCONB"][self._BANKING_MODE_IS_ACTIVE],
                 0x00)
             # Since interrupt-on-change is configured, the DEFVALB register is set
             # to 0x00.
-            pi.i2c_write_byte_data(self._h,
+            self.pi.i2c_write_byte_data(self._h,
                 MCP23017_REGISTER_MAPPING["DEFVALB"][self._BANKING_MODE_IS_ACTIVE],
                 0x00)
 
-            pi.set_mode(INT_GPIO, pigpio.INPUT)
+            self.pi.set_mode(INTB_GPIO, pigpio.INPUT)
 
-            self._cb = pi.callback(INT_GPIO, pigpio.RISING_EDGE, self._cbf)
+            self._cb = self.pi.callback(INTB_GPIO, pigpio.RISING_EDGE, self._cbf)
             self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
             self._tick = [None] * self.number_of_sensors
@@ -287,6 +285,8 @@ class HCSR04Cluster:
         Each edge of the echo pin creates an interrupt and thus a rising
         edge on the interrupt pin.
         """
+        logging.debug("HCSR04Cluster._cbf()")
+
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
         # Since a read acces to the register happens here the interrupt is 
@@ -312,106 +312,87 @@ class HCSR04Cluster:
                 str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
                 # Falling edge of echo signal detected
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
+                self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
                 self._interrupt_processed[affected_sensors[i]] = True
             else:
                 return -1
 
         self.GPIOB_state = GPIOB_new_state
-        
-
-
-        if self._edge == 1:
-            self._tick = tick
-        elif self._edge == 2:
-            diff = pigpio.tickDiff(self._tick, tick)
-            self._micros = diff
-            self._interrupt_processed = True
-        self._edge += 1
-    
-    def measure_distance(self):
-        self.trigger_measurement()
-
-
-    def trigger_measurement(self):
+            
+    def trigger_measurement(self, sensor_number = None):
         logging.debug("HCSR04Cluster.trigger_measurement()")
-        register_value = sum([1 << x.gpio_assignment for x in self.sensors])
+
+        if self._INTB_GPIO is not None:
+            self._interrupt_processed[:] = [False] * self.number_of_sensors
+
+        if sensor_number is not None:
+            bitmask = 1 << sensor_number
+        else:
+            bitmask = self.sensor_bitmask
+
         #  Send a 10us pulse
-        logging.debug(f'Sending 10 us trigger pulse on GPIOA: {hex(register_value)}')
+        logging.debug(f'Sending 10 us trigger pulse on GPIOA using bitmask {bin(bitmask)}')
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
-            register_value)
-        time.sleep (0.00001)
+            bitmask)
+        time.sleep (10 * 10**-6)
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
             0x00)
 
-    def read(self, ranger):
+    def measure_distance(self):
         """
         Triggers and returns an ultrasonic sensor measurement. The returned value is
         the distance in centimetres to the detected object.
 
-        sensor is 0 for the sensor connected to A0/B0, 1 for the sensor
+        Sensor number is 0 for the sensor connected to A0/B0, 1 for the sensor
         connected to A1/B1 etc.
         """
-        if self._INTA_GPIO is not None:
-            self._edge = 1
-            self._interrupt_processed = False
-            
-            # This construct is absolutely not readable... don't use it
-            # unless it achieves significant performance improvements!
-            count, data = self.pi.i2c_zip(self._h, 
-                [7, 2, HCSR04Cluster.GPINTENA, 1<<ranger, # Interrupt on sensor.
-                 7, 1, HCSR04Cluster.GPIOA,               # Clear interrupts.
-                 6, 1,
-                 7, 3, HCSR04Cluster.GPIOB, 1<<ranger, 0, # Send trigger.
-                 7, 1, HCSR04Cluster.GPIOA,               # Consume interrupt.
-                 6, self._trigger_gap])
 
-            timeout = time.time() + self._timeout
-            while not self._interrupt_processed:
-                if time.time() > timeout:
-                    return HCSR04Cluster.INVALID_READING
-                time.sleep(0.01)
+        logging.debug("HCSR04Cluster.measure_distance()")
 
-            return self._micros * HCSR04Cluster.MICS2CMS
+        if self._INTB_GPIO is not None:
+            self.trigger_measurement()
+
+            while not all(self._interrupt_processed):
+                #if time.time() > timeout:
+                #    return HCSR04Cluster.INVALID_READING
+                pass
+
+            return
 
         else:
-            logging.debug("meas_dist()")
-
-            #  Send a 10us pulse
-            logging.debug(f'Sending 10 us trigger pulse on GPIOA: {hex(1<<ranger)}')
-            self.pi.i2c_write_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
-                1<<ranger)
-            time.sleep (0.00001)
-            self.pi.i2c_write_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["GPIOA"][self._BANKING_MODE_IS_ACTIVE], 
-                0x00)
-            
-            state = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-            logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
-            while (state & (1<<ranger)) == 0:
-                state = self.pi.i2c_read_byte_data(self._h, 
-                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-                logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
-                pass
-            start = time.time()
-        
-            state = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-            logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
-            while (state & (1<<ranger)) == (1<<ranger):
-                state = self.pi.i2c_read_byte_data(self._h, 
-                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-                logging.debug(f'Waiting for echo pin of sensor {ranger} to turn HIGH: {hex(state)}')
-                pass
-            end = time.time()
-        
-            distance = ((end - start) * 34300) / 2
-            print("Distance of sensor ", ranger, ": ", distance, " cm")
-            return distance
+            for i in range(self.number_of_sensors):
+                self.trigger_measurement(i)
     
+                GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH, GPIOB state: {bin(GPIOB_state)}')
+                while (GPIOB_state & (1<<i)) == 0:
+                    GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                        MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                    logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    pass
+                start = time.time()
+            
+                GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                while (GPIOB_state & (1<<i)) == (1<<i):
+                    GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                        MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                    logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    pass
+                end = time.time()
+
+                self.sensors[i].distance_cm = ((end - start) * 34300) / 2
+
+            return
+    
+    def print(self):
+        for i in range(self.number_of_sensors):
+            print(f'Measured distance of sensor {self.sensors[i].position}: {self.sensors[i].distance_cm} cm')
+
     def _is_is_power_of_two(self, n):
         # A utility function to check whether n is power of 2 or not.
         return (True if(n > 0 and ((n & (n - 1)) > 0))
@@ -448,23 +429,13 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    pi=pigpio.pi() # Connect to local Pi.
-
-    if not pi.connected:
-        exit(0)
-
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(pi, 
-        BANKING_MODE_IS_ACTIVE = 1)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(BANKING_MODE_IS_ACTIVE = 1)
 
     stop = time.time() + TIME
 
     while time.time() < stop:
-        v = s.read(0) # 0 is ranger 0 (connected to A0/B0).
-        time.sleep(0.1)
-
-        v = s.read(1) # 1 is ranger 1 (connected to A1/B1).
+        s.measure_distance()
+        s.print()
         time.sleep(0.1)
 
     s.cancel()
-
-    pi.stop()
