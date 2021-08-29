@@ -332,7 +332,7 @@ class HCSR04Cluster:
                 # Falling edge of echo signal detected
                 logging.debug(f'Falling edge of echo signal of sensor {affected_sensors[i]} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
-                self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
+                self.sensors[affected_sensors[i]].distance_cm = diff * HCSR04Cluster.MICS2CMS
                 self._interrupt_processed |= (1<<affected_sensors[i])
 
         self.GPIOB_state = GPIOB_new_state
