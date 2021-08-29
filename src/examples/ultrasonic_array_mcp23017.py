@@ -178,8 +178,8 @@ class HCSR04Cluster:
         self._MODE = mode
         self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
         
-        self.sensors = [HCSR04("FRONT_RIGHT", 0),
-                        HCSR04("FRONT_MIDDLE", 1)]#,
+        self.sensors = [HCSR04("FRONT_RIGHT", 0)]#,
+                        #HCSR04("FRONT_MIDDLE", 1)]#,
                         #HCSR04("FRONT_LEFT", 2),
                         #HCSR04("LEFT", 3),
                         #HCSR04("REAR_LEFT", 4),
@@ -254,7 +254,7 @@ class HCSR04Cluster:
             self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
             self._tick = [None] * self.number_of_sensors
-            self._interrupt_processed = [False] * self.number_of_sensors
+            self._interrupt_processed = 0xFF #[False] * self.number_of_sensors
 
             self._trigger_gap = int(HCSR04Cluster.TRIGGER_GAP / self._bus_byte_micros)-1
         else:
@@ -332,7 +332,7 @@ class HCSR04Cluster:
                 logging.debug(f'Falling edge of echo signal of sensor {i} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
                 self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
-                self._interrupt_processed[affected_sensors[i]] = True
+                self._interrupt_processed |= (1<<i)
             else:
                 return -1
 
@@ -342,7 +342,7 @@ class HCSR04Cluster:
         logging.debug("HCSR04Cluster.trigger_measurement()")
 
         if self._INTB_GPIO is not None:
-            self._interrupt_processed[:] = [False] * self.number_of_sensors
+            self._interrupt_processed = self.sensor_bitmask ^ 0xFF
 
         if sensor_number is not None:
             bitmask = 1 << sensor_number
@@ -373,7 +373,7 @@ class HCSR04Cluster:
         if self._INTB_GPIO is not None:
             self.trigger_measurement()
 
-            while not all(self._interrupt_processed):
+            while self._interrupt_processed != 0xFF:
                 #if time.time() > timeout:
                 #    return HCSR04Cluster.INVALID_READING
                 # GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
