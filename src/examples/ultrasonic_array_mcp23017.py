@@ -208,7 +208,7 @@ class HCSR04Cluster:
         # Enable pull-ups for unused inports to prevent undesirable effects.
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["GPPUB"][self._BANKING_MODE_IS_ACTIVE], 
-            ~self.sensor_bitmask)
+            self.sensor_bitmask ^ 0xFF)
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
 
