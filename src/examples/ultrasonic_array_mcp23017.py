@@ -195,7 +195,7 @@ class HCSR04Cluster:
 
         # Initialise MCP23017 port A as outputs (trigger signal), B as inputs 
         # (echo signal).  According to MCP23017 datasheet a GPIO is defined as
-        # input if the corresponding bit is set to 1
+        # input if the corresponding bit is set to 1.
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IODIRA"][self._BANKING_MODE_IS_ACTIVE], 
             0x00) # A is ouputs.
@@ -205,6 +205,10 @@ class HCSR04Cluster:
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IODIRB"][self._BANKING_MODE_IS_ACTIVE], 
             0xFF) # B is inputs.
+        # Enable pull-ups for unused inports to prevent undesirable effects.
+        self.pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["GPPUB"][self._BANKING_MODE_IS_ACTIVE], 
+            ~self.sensor_bitmask)
 
         self._bus_byte_micros = 1000000.0 / (i2c_kbps * 1000.0) * 9.0
 
@@ -362,9 +366,9 @@ class HCSR04Cluster:
             while not all(self._interrupt_processed):
                 #if time.time() > timeout:
                 #    return HCSR04Cluster.INVALID_READING
-                GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
-                    MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-                logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
+                # GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
+                #     MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                # logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
                 pass
 
             return
