@@ -325,17 +325,18 @@ class HCSR04Cluster:
             if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == '0' and 
                 str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == '1'):
                 # Rising edge of echo signal detected
-                logging.debug(f'Rising edge of echo signal of sensor {i} detected.')
+                logging.debug(f'Rising edge of echo signal of sensor {affected_sensors[i]} detected.')
                 self._tick[affected_sensors[i]] = tick
             elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == '1' and 
                   str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == '0'):
                 # Falling edge of echo signal detected
-                logging.debug(f'Falling edge of echo signal of sensor {i} detected.')
+                logging.debug(f'Falling edge of echo signal of sensor {affected_sensors[i]} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
                 self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
-                self._interrupt_processed |= (1<<i)
+                self._interrupt_processed |= (1<<affected_sensors[i])
 
         self.GPIOB_state = GPIOB_new_state
+        logging.debug(f'Interrupt status: {bin(self._interrupt_processed)}')
             
     def trigger_measurement(self, sensor_number = None):
         logging.debug("HCSR04Cluster.trigger_measurement()")
