@@ -318,6 +318,10 @@ class HCSR04Cluster:
         # Treat state diff. bitmask as string and return indizes of 1's
         affected_sensors = [m.start() for m in re.finditer("1", str(bin(state_diff))[::-1])]
         logging.debug(f'Affected sensors: {affected_sensors}')
+        
+        if affected_sensors is None:
+            self.trigger_measurement()
+            return
 
         for i in range(0, len(affected_sensors)):
             # Determine edge by comparing the binary string representation of
