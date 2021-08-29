@@ -70,9 +70,15 @@ MCP23017_REGISTER_MAPPING = {
 }
 
 # MCP23017 configuration register flags (IOCON ADDR 0x05)
-BANK   = (1<<7)
-SEQOP  = (1<<5)
-INTPOL = (1<<1)
+IOCON_INTPOL = (1<<1)
+IOCON_SEQOP  = (0<<5)
+IOCON_MIRROR = (0<<6)
+IOCON_BANK   = (1<<7)
+
+MODE = (IOCON_INTPOL + 
+        IOCON_SEQOP + 
+        IOCON_MIRROR + 
+        IOCON_BANK)
 
 class HCSR04:
     def __init__(self, pos, gpio):
@@ -143,7 +149,7 @@ class HCSR04Cluster:
                  # Interrupt based operation is enabled if a GPIO to process
                  # the interrupt signal is supplied.
                  INTB_GPIO = None,
-                 BANKING_MODE_IS_ACTIVE = 0,
+                 mode = MODE,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
         """
@@ -169,7 +175,8 @@ class HCSR04Cluster:
 
         self._cb = None
         self._INTB_GPIO = INTB_GPIO
-        self._BANKING_MODE_IS_ACTIVE = BANKING_MODE_IS_ACTIVE
+        self._MODE = mode
+        self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
         
         self.sensors = [HCSR04("FRONT_RIGHT", 0),
                         HCSR04("FRONT_MIDDLE", 1)]#,
@@ -192,6 +199,9 @@ class HCSR04Cluster:
 
         self._h = self.pi.i2c_open(i2c_channel, i2c_addr)
         self._set_banking_mode()
+        self.pi.i2c_write_byte_data(self._h, 
+            MCP23017_REGISTER_MAPPING["IOCON1"][self._BANKING_MODE_IS_ACTIVE], 
+            self._MODE)
 
         # Initialise MCP23017 port A as outputs (trigger signal), B as inputs 
         # (echo signal).  According to MCP23017 datasheet a GPIO is defined as
@@ -273,12 +283,12 @@ class HCSR04Cluster:
         # GPINTENB.GPINT7 has been disabled. Anyway the MCP23017 is now in 
         # the defined state IOCON.BANK = 0 an can be set according to the
         # value of the class attribute.
-        iocon1_state &= ~BANK
+        iocon1_state &= ~IOCON_BANK
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IOCON1"][1], 
             iocon1_state)
 
-        iocon1_state |= self._BANKING_MODE_IS_ACTIVE * BANK
+        iocon1_state |= self._BANKING_MODE_IS_ACTIVE * IOCON_BANK
         self.pi.i2c_write_byte_data(self._h, 
             MCP23017_REGISTER_MAPPING["IOCON1"][0], 
             iocon1_state)
@@ -441,8 +451,7 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(BANKING_MODE_IS_ACTIVE = 1,
-                                                INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = 14)
 
     stop = time.time() + TIME
 
