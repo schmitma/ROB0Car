@@ -323,7 +323,7 @@ class HCSR04Cluster:
         logging.debug(f'Affected sensors: {affected_sensors}')
         
         if not affected_sensors:
-            self.trigger_measurement()
+            #self.trigger_measurement()
             return
 
         for i in range(0, len(affected_sensors)):
