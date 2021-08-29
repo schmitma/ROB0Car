@@ -322,20 +322,18 @@ class HCSR04Cluster:
         for i in range(0, len(affected_sensors)):
             # Determine edge by comparing the binary string representation of
             # old and new state for corresponding sensor index
-            if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 0 and 
-                str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 1):
+            if (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == '0' and 
+                str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == '1'):
                 # Rising edge of echo signal detected
                 logging.debug(f'Rising edge of echo signal of sensor {i} detected.')
                 self._tick[affected_sensors[i]] = tick
-            elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 1 and 
-                  str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
+            elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == '1' and 
+                  str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == '0'):
                 # Falling edge of echo signal detected
                 logging.debug(f'Falling edge of echo signal of sensor {i} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
                 self.sensors[i].distance_cm = diff * HCSR04Cluster.MICS2CMS
                 self._interrupt_processed |= (1<<i)
-            else:
-                return -1
 
         self.GPIOB_state = GPIOB_new_state
             
