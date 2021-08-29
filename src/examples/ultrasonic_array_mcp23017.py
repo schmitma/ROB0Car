@@ -319,7 +319,7 @@ class HCSR04Cluster:
         affected_sensors = [m.start() for m in re.finditer("1", str(bin(state_diff))[::-1])]
         logging.debug(f'Affected sensors: {affected_sensors}')
         
-        if affected_sensors is None:
+        if not affected_sensors:
             self.trigger_measurement()
             return
 
