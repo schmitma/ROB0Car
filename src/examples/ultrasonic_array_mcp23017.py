@@ -317,6 +317,7 @@ class HCSR04Cluster:
         # signal process corresponding change
         # Treat state diff. bitmask as string and return indizes of 1's
         affected_sensors = [m.start() for m in re.finditer("1", str(bin(state_diff))[::-1])]
+        logging.debug(f'Affected sensors: {affected_sensors}')
 
         for i in range(0, len(affected_sensors)):
             # Determine edge by comparing the binary string representation of
@@ -327,7 +328,7 @@ class HCSR04Cluster:
                 logging.debug(f'Rising edge of echo signal of sensor {i} detected.')
                 self._tick[affected_sensors[i]] = tick
             elif (str(bin(self.GPIOB_state))[::-1][affected_sensors[i]] == 1 and 
-                str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
+                  str(bin(GPIOB_new_state))[::-1][affected_sensors[i]] == 0):
                 # Falling edge of echo signal detected
                 logging.debug(f'Falling edge of echo signal of sensor {i} detected.')
                 diff = pigpio.tickDiff(self._tick[affected_sensors[i]], tick)
