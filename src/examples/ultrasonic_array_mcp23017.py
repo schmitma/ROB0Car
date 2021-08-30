@@ -317,6 +317,7 @@ class HCSR04Cluster:
         # logging.debug(f'INTFB: {INTFB}')
 
     def _process_interrupt(self, tick, GPIOB_state):
+        logging.debug('HCSR04Cluster._process_interrupts()')
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
         # Since a read acces to the register happens here the interrupt is 
@@ -387,8 +388,9 @@ class HCSR04Cluster:
         Sensor number is 0 for the sensor connected to A0/B0, 1 for the sensor
         connected to A1/B1 etc.
         """
-
         logging.debug("HCSR04Cluster.measure_distance()")
+
+        timeout = time.time() + self._timeout
 
         if self._INTB_GPIO is not None:
             self.trigger_measurement()
@@ -406,6 +408,8 @@ class HCSR04Cluster:
             return
 
         else:
+            timeout = time.time() + self._timeout
+            
             for i in range(self.number_of_sensors):
                 self.trigger_measurement(i)
     
@@ -416,6 +420,9 @@ class HCSR04Cluster:
                     GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                         MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
                     logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    if time.time() > timeout:
+                        self.sensors[i].distance_cm = self.INVALID_READING
+                        return
                     pass
                 start = time.time()
             
@@ -426,9 +433,12 @@ class HCSR04Cluster:
                     GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                         MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
                     logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    if time.time() > timeout:
+                        self.sensors[i].distance_cm = self.INVALID_READING
+                        return
                     pass
                 end = time.time()
-
+                
                 self.sensors[i].distance_cm = ((end - start) * 34300) / 2
 
             return
@@ -473,7 +483,7 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster()#INTB_GPIO = 14)
 
     stop = time.time() + TIME
 
