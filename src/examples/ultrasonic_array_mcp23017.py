@@ -401,6 +401,8 @@ class HCSR04Cluster:
                     logging.debug(f'Missing sensors: {missing_sensors}')
                     for i in range(0, len(missing_sensors)):
                         self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
+                    return
+
             return
 
         else:
