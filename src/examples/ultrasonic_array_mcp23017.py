@@ -5,7 +5,7 @@ import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 import sys
 import logging
 import re
-from queue import Queue
+import queue
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
