@@ -304,6 +304,7 @@ class HCSR04Cluster:
         Each edge of the echo pin creates an interrupt and thus a rising
         edge on the interrupt pin.
         """
+        logging.debug("HCSR04Cluster._interrupt_callback()")
         GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
 
