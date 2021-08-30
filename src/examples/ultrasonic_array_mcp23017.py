@@ -5,6 +5,7 @@ import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 import sys
 import logging
 import re
+import queue
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -253,11 +254,13 @@ class HCSR04Cluster:
 
             self.pi.set_mode(INTB_GPIO, pigpio.INPUT)
 
-            self._cb = self.pi.callback(INTB_GPIO, pigpio.RISING_EDGE, self._cbf)
+            self._cb = self.pi.callback(INTB_GPIO, pigpio.RISING_EDGE, self._interrupt_callback)
             self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
             self._tick = [None] * self.number_of_sensors
             self._interrupt_processed = 0xFF #[False] * self.number_of_sensors
+            
+            self._interrupt_queue = queue.Queue()
 
             self._trigger_gap = int(HCSR04Cluster.TRIGGER_GAP / self._bus_byte_micros)-1
         else:
@@ -296,27 +299,30 @@ class HCSR04Cluster:
             MCP23017_REGISTER_MAPPING["IOCON1"][0], 
             iocon1_state)
 
-    def _cbf(self, gpio, level, tick):
+    def _interrupt_callback(self, gpio, level, tick):
         """
         Each edge of the echo pin creates an interrupt and thus a rising
         edge on the interrupt pin.
         """
-        logging.debug("HCSR04Cluster._cbf()")
+        GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
 
-        INTFA = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
-        logging.debug(f'INTFA: {INTFA}')
-        INTFB = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTFB"][self._BANKING_MODE_IS_ACTIVE])
-        logging.debug(f'INTFB: {INTFB}')
+        self._interrupt_queue.put([tick, GPIOB_new_state])
 
+        # INTFA = self.pi.i2c_read_byte_data(self._h, 
+        #         MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
+        # logging.debug(f'INTFA: {INTFA}')
+        # INTFB = self.pi.i2c_read_byte_data(self._h, 
+        #         MCP23017_REGISTER_MAPPING["INTFB"][self._BANKING_MODE_IS_ACTIVE])
+        # logging.debug(f'INTFB: {INTFB}')
+
+    def _process_interrupt(self, tick, GPIOB_state):
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
         # Since a read acces to the register happens here the interrupt is 
         # already consumed!
-        GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
-        
+        GPIOB_new_state = GPIOB_state
+
         state_diff = self.GPIOB_state ^ GPIOB_new_state
         
         logging.debug(f'GPIOB state: {bin(self.GPIOB_state)}')
@@ -393,6 +399,8 @@ class HCSR04Cluster:
                 # GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 #     MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
                 # logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
+                queue_element = self._interrupt_queue.get()
+                self._process_interrupt(queue_element[0], queue_element[1])
                 pass
 
             return
