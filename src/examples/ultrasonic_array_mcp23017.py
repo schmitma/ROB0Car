@@ -303,12 +303,19 @@ class HCSR04Cluster:
         """
         logging.debug("HCSR04Cluster._cbf()")
 
+        INTFA = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
+        logging.debug(f'INTFA: {INTFA}')
+        INTFB = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
+        logging.debug(f'INTFA: {INTFB}')
+
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
         # Since a read acces to the register happens here the interrupt is 
         # already consumed!
         GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
+                MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
         
         state_diff = self.GPIOB_state ^ GPIOB_new_state
         
