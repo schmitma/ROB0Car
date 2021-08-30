@@ -403,6 +403,9 @@ class HCSR04Cluster:
                     for i in range(0, len(missing_sensors)):
                         self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
                     return
+                
+                queue_element = self._interrupt_queue.get(block=False)#,timeout=timeout)
+                self._process_interrupt(queue_element[0], queue_element[1])
 
             return
 
