@@ -307,8 +307,8 @@ class HCSR04Cluster:
                 MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
         logging.debug(f'INTFA: {INTFA}')
         INTFB = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
-        logging.debug(f'INTFA: {INTFB}')
+                MCP23017_REGISTER_MAPPING["INTFB"][self._BANKING_MODE_IS_ACTIVE])
+        logging.debug(f'INTFB: {INTFB}')
 
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
