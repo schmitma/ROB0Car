@@ -390,26 +390,21 @@ class HCSR04Cluster:
         """
         logging.debug("HCSR04Cluster.measure_distance()")
 
-        timeout = time.time() + self._timeout
-
         if self._INTB_GPIO is not None:
+            timeout = time.time() + (self._timeout*8)
+
             self.trigger_measurement()
 
             while self._interrupt_processed != 0xFF:
-                #if time.time() > timeout:
-                #    return HCSR04Cluster.INVALID_READING
-                # GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
-                #     MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-                # logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
-                queue_element = self._interrupt_queue.get()
-                self._process_interrupt(queue_element[0], queue_element[1])
-                pass
-
+                if time.time() > timeout:
+                    missing_sensors = [m.start() for m in re.finditer("0", str(bin(self._interrupt_processed))[::-1])]
+                    for i in range(0, len(missing_sensors)):
+                        self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
             return
 
         else:
             timeout = time.time() + self._timeout
-            
+
             for i in range(self.number_of_sensors):
                 self.trigger_measurement(i)
     
@@ -483,7 +478,7 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster()#INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = 14)
 
     stop = time.time() + TIME
 
