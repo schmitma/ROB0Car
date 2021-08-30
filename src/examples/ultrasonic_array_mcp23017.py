@@ -397,7 +397,7 @@ class HCSR04Cluster:
 
             while self._interrupt_processed != 0xFF:
                 if time.time() > timeout:
-                    missing_sensors = [m.start() for m in re.finditer("0", str(bin(self._interrupt_processed))[::-1])]
+                    missing_sensors = [m.start() for m in re.finditer("0", str(bin(self._interrupt_processed))[2:-1])]
                     logging.debug(f'Missing sensors: {missing_sensors}')
                     for i in range(0, len(missing_sensors)):
                         self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
