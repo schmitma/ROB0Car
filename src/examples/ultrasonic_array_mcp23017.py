@@ -391,13 +391,14 @@ class HCSR04Cluster:
         logging.debug("HCSR04Cluster.measure_distance()")
 
         if self._INTB_GPIO is not None:
-            timeout = time.time() + (self._timeout*8)
+            timeout = time.time() + (self._timeout*self.number_of_sensors)
 
             self.trigger_measurement()
 
             while self._interrupt_processed != 0xFF:
                 if time.time() > timeout:
                     missing_sensors = [m.start() for m in re.finditer("0", str(bin(self._interrupt_processed))[::-1])]
+                    logging.debug(f'Missing sensors: {missing_sensors}')
                     for i in range(0, len(missing_sensors)):
                         self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
             return
