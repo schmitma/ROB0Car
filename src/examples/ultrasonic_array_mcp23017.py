@@ -5,7 +5,7 @@ import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 import sys
 import logging
 import re
-import queue
+from queue import Queue
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -365,6 +365,9 @@ class HCSR04Cluster:
 
         if self._INTB_GPIO is not None:
             self._interrupt_processed = self.sensor_bitmask ^ 0xFF
+
+            with self._interrupt_queue.mutex:
+                self._interrupt_queue.queue.clear()
 
         if sensor_number is not None:
             bitmask = 1 << sensor_number
