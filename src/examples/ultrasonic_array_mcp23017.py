@@ -82,6 +82,15 @@ MODE = (IOCON_INTPOL +
         IOCON_MIRROR + 
         IOCON_BANK)
 
+SENSORS = (("FRONT_RIGHT", 0),
+           ("FRONT_MIDDLE", 1),
+           ("FRONT_LEFT", 2),
+           ("LEFT", 3),
+           ("REAR_LEFT", 4),
+           ("REAR_MIDDLE", 5),
+           ("REAR_RIGHT", 6),
+           ("RIGHT", 7))
+
 class HCSR04:
     def __init__(self, pos, gpio):
         # Maybe define position in coordinates?
@@ -152,6 +161,7 @@ class HCSR04Cluster:
                  # the interrupt signal is supplied.
                  INTB_GPIO = None,
                  mode = MODE,
+                 sensor_configuration = 0xFF,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
         """
@@ -179,15 +189,10 @@ class HCSR04Cluster:
         self._INTB_GPIO = INTB_GPIO
         self._MODE = mode
         self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
-        
-        self.sensors = [HCSR04("FRONT_RIGHT", 0),
-                        HCSR04("FRONT_MIDDLE", 1),
-                        HCSR04("FRONT_LEFT", 2),
-                        HCSR04("LEFT", 3),
-                        HCSR04("REAR_LEFT", 4),
-                        HCSR04("REAR_MIDDLE", 5),
-                        HCSR04("REAR_RIGHT", 6),
-                        HCSR04("RIGHT", 7)]
+        self._sensor_configuration = sensor_configuration
+
+        sensor_config_idzs = [m.start() for m in re.finditer("1", '{0:08b}'.format(self._sensor_configuration)[::-1])]
+        self.sensors = [HCSR04(SENSORS[s][1], SENSORS[s][2]) for s in sensor_config_idzs]
         
         self.number_of_sensors = len(self.sensors)
         self.sensor_bitmask = sum([1 << x.gpio_assignment for x in self.sensors])
@@ -488,17 +493,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--interrupt_pin",
                         type=int,
-                        help="pin for interrupt driven operation",
+                        help="pin for interrupt driven operation"
+                       )
+    parser.add_argument("--sensor_configuration",
+                        type=int,
+                        help="bitmask for sensor configuration",
+                        default=0xFF
                        )
 
     args = parser.parse_args()
     intb_gpio = args.interrupt_pin if args.interrupt_pin is not None else None
     logging.debug(f'--interrupt_pin: {args.interrupt_pin}')
     logging.debug(f'intb_gpio: {intb_gpio}')
+    sensor_config = args.sensor_configuration
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = intb_gpio)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = intb_gpio,
+                                                sensor_configuration = sensor_config
+                                               )
 
     stop = time.time() + TIME
 
