@@ -192,7 +192,7 @@ class HCSR04Cluster:
         self._sensor_configuration = sensor_configuration
 
         sensor_config_idzs = [m.start() for m in re.finditer("1", '{0:08b}'.format(self._sensor_configuration)[::-1])]
-        self.sensors = [HCSR04(SENSORS[s][1], SENSORS[s][2]) for s in sensor_config_idzs]
+        self.sensors = [HCSR04(SENSORS[s][0], SENSORS[s][1]) for s in sensor_config_idzs]
         
         self.number_of_sensors = len(self.sensors)
         self.sensor_bitmask = sum([1 << x.gpio_assignment for x in self.sensors])
