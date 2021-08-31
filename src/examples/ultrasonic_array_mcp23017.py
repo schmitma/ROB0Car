@@ -179,8 +179,8 @@ class HCSR04Cluster:
         self._MODE = mode
         self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
         
-        self.sensors = [HCSR04("FRONT_RIGHT", 0),
-                        HCSR04("FRONT_MIDDLE", 1)]#,
+        self.sensors = [HCSR04("FRONT_RIGHT", 0)]#,
+                        #HCSR04("FRONT_MIDDLE", 1)]#,
                         #HCSR04("FRONT_LEFT", 2),
                         #HCSR04("LEFT", 3),
                         #HCSR04("REAR_LEFT", 4),
@@ -486,7 +486,7 @@ if __name__ == "__main__":
 
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster()#INTB_GPIO = 14)
 
     stop = time.time() + TIME
 
