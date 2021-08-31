@@ -6,6 +6,7 @@ import sys
 import logging
 import re
 import queue
+import argparse
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -179,14 +180,14 @@ class HCSR04Cluster:
         self._MODE = mode
         self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
         
-        self.sensors = [HCSR04("FRONT_RIGHT", 0)]#,
-                        #HCSR04("FRONT_MIDDLE", 1)]#,
-                        #HCSR04("FRONT_LEFT", 2),
-                        #HCSR04("LEFT", 3),
-                        #HCSR04("REAR_LEFT", 4),
-                        #HCSR04("REAR_MIDDLE", 5),
-                        #HCSR04("REAR_RIGHT", 6),
-                        #HCSR04("RIGHT", 7)]
+        self.sensors = [HCSR04("FRONT_RIGHT", 0),
+                        HCSR04("FRONT_MIDDLE", 1),
+                        HCSR04("FRONT_LEFT", 2),
+                        HCSR04("LEFT", 3),
+                        HCSR04("REAR_LEFT", 4),
+                        HCSR04("REAR_MIDDLE", 5),
+                        HCSR04("REAR_RIGHT", 6),
+                        HCSR04("RIGHT", 7)]
         
         self.number_of_sensors = len(self.sensors)
         self.sensor_bitmask = sum([1 << x.gpio_assignment for x in self.sensors])
@@ -484,9 +485,20 @@ if __name__ == "__main__":
     import pigpio
     import ultrasonic_array_mcp23017
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--interrupt_pin",
+                        type=int,
+                        help="pin for interrupt driven operation",
+                       )
+
+    args = parser.parse_args()
+    intb_gpio = args.interrupt_pin if args.interrupt_pin is not None else None
+    logging.debug(f'--interrupt_pin: {args.interrupt_pin}')
+    logging.debug(f'intb_gpio: {intb_gpio}')
+
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster()#INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = intb_gpio)
 
     stop = time.time() + TIME
 
