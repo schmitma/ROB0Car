@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import time
 from pca9685 import PCA9685
 
@@ -10,7 +10,7 @@ try:
     
     while True:
         for i in range(10,170,1): 
-            pca9685.setRotationAngle(1, i)   
+            pca9685.setRotationAngle(1, i)
             if(i<80):
                 pca9685.setRotationAngle(0, i)   
             time.sleep(0.1)
