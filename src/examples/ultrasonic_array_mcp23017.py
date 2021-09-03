@@ -5,6 +5,8 @@ import pigpio # https://abyz.me.uk/rpi/pigpio/python.html
 import sys
 import logging
 import re
+import queue
+import argparse
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -80,6 +82,15 @@ MODE = (IOCON_INTPOL +
         IOCON_MIRROR + 
         IOCON_BANK)
 
+SENSORS = (("FRONT_RIGHT", 0),
+           ("FRONT_MIDDLE", 1),
+           ("FRONT_LEFT", 2),
+           ("LEFT", 3),
+           ("REAR_LEFT", 4),
+           ("REAR_MIDDLE", 5),
+           ("REAR_RIGHT", 6),
+           ("RIGHT", 7))
+
 class HCSR04:
     def __init__(self, pos, gpio):
         # Maybe define position in coordinates?
@@ -150,6 +161,7 @@ class HCSR04Cluster:
                  # the interrupt signal is supplied.
                  INTB_GPIO = None,
                  mode = MODE,
+                 sensor_configuration = 0xFF,
                  i2c_kbps = 100.0, 
                  max_range_cm = 450):
         """
@@ -177,15 +189,10 @@ class HCSR04Cluster:
         self._INTB_GPIO = INTB_GPIO
         self._MODE = mode
         self._BANKING_MODE_IS_ACTIVE = 1 if (self._MODE | IOCON_BANK) else 0
-        
-        self.sensors = [HCSR04("FRONT_RIGHT", 0),
-                        HCSR04("FRONT_MIDDLE", 1)]#,
-                        #HCSR04("FRONT_LEFT", 2),
-                        #HCSR04("LEFT", 3),
-                        #HCSR04("REAR_LEFT", 4),
-                        #HCSR04("REAR_MIDDLE", 5),
-                        #HCSR04("REAR_RIGHT", 6),
-                        #HCSR04("RIGHT", 7)]
+        self._sensor_configuration = sensor_configuration
+
+        sensor_config_idzs = [m.start() for m in re.finditer("1", '{0:08b}'.format(self._sensor_configuration)[::-1])]
+        self.sensors = [HCSR04(SENSORS[s][0], SENSORS[s][1]) for s in sensor_config_idzs]
         
         self.number_of_sensors = len(self.sensors)
         self.sensor_bitmask = sum([1 << x.gpio_assignment for x in self.sensors])
@@ -253,11 +260,13 @@ class HCSR04Cluster:
 
             self.pi.set_mode(INTB_GPIO, pigpio.INPUT)
 
-            self._cb = self.pi.callback(INTB_GPIO, pigpio.RISING_EDGE, self._cbf)
+            self._cb = self.pi.callback(INTB_GPIO, pigpio.RISING_EDGE, self._interrupt_callback)
             self.GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                 MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
             self._tick = [None] * self.number_of_sensors
             self._interrupt_processed = 0xFF #[False] * self.number_of_sensors
+            
+            self._interrupt_queue = queue.Queue()
 
             self._trigger_gap = int(HCSR04Cluster.TRIGGER_GAP / self._bus_byte_micros)-1
         else:
@@ -296,27 +305,32 @@ class HCSR04Cluster:
             MCP23017_REGISTER_MAPPING["IOCON1"][0], 
             iocon1_state)
 
-    def _cbf(self, gpio, level, tick):
+    def _interrupt_callback(self, gpio, level, tick):
         """
         Each edge of the echo pin creates an interrupt and thus a rising
         edge on the interrupt pin.
         """
-        logging.debug("HCSR04Cluster._cbf()")
+        logging.debug("HCSR04Cluster._interrupt_callback()")
+        GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
+                MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
 
-        INTFA = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
-        logging.debug(f'INTFA: {INTFA}')
-        INTFB = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTFB"][self._BANKING_MODE_IS_ACTIVE])
-        logging.debug(f'INTFB: {INTFB}')
+        self._interrupt_queue.put([tick, GPIOB_new_state])
 
+        # INTFA = self.pi.i2c_read_byte_data(self._h, 
+        #         MCP23017_REGISTER_MAPPING["INTFA"][self._BANKING_MODE_IS_ACTIVE])
+        # logging.debug(f'INTFA: {INTFA}')
+        # INTFB = self.pi.i2c_read_byte_data(self._h, 
+        #         MCP23017_REGISTER_MAPPING["INTFB"][self._BANKING_MODE_IS_ACTIVE])
+        # logging.debug(f'INTFB: {INTFB}')
+
+    def _process_interrupt(self, tick, GPIOB_state):
+        logging.debug('HCSR04Cluster._process_interrupts()')
         # How to determine which gpio of mcp23017 has changed?
         # Maybe save register state and compare on every interrupt?
         # Since a read acces to the register happens here the interrupt is 
         # already consumed!
-        GPIOB_new_state = self.pi.i2c_read_byte_data(self._h, 
-                MCP23017_REGISTER_MAPPING["INTCAPB"][self._BANKING_MODE_IS_ACTIVE])
-        
+        GPIOB_new_state = GPIOB_state
+
         state_diff = self.GPIOB_state ^ GPIOB_new_state
         
         logging.debug(f'GPIOB state: {bin(self.GPIOB_state)}')
@@ -358,6 +372,9 @@ class HCSR04Cluster:
         if self._INTB_GPIO is not None:
             self._interrupt_processed = self.sensor_bitmask ^ 0xFF
 
+            with self._interrupt_queue.mutex:
+                self._interrupt_queue.queue.clear()
+
         if sensor_number is not None:
             bitmask = 1 << sensor_number
         else:
@@ -381,23 +398,27 @@ class HCSR04Cluster:
         Sensor number is 0 for the sensor connected to A0/B0, 1 for the sensor
         connected to A1/B1 etc.
         """
-
         logging.debug("HCSR04Cluster.measure_distance()")
 
         if self._INTB_GPIO is not None:
             self.trigger_measurement()
 
             while self._interrupt_processed != 0xFF:
-                #if time.time() > timeout:
-                #    return HCSR04Cluster.INVALID_READING
-                # GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
-                #     MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
-                # logging.debug(f'GPIOB state: {bin(GPIOB_state)}.')
-                pass
+                try:
+                    queue_element = self._interrupt_queue.get(timeout=self._timeout)
+                    self._process_interrupt(queue_element[0], queue_element[1])
+                except queue.Empty:
+                    missing_sensors = [m.start() for m in re.finditer("0", '{0:08b}'.format(self._interrupt_processed)[::-1])]
+                    logging.debug(f'Missing sensors: {missing_sensors}')
+                    for i in range(0, len(missing_sensors)):
+                        self.sensors[missing_sensors[i]].distance_cm = self.INVALID_READING
+                    return
 
             return
 
         else:
+            timeout = time.time() + self._timeout
+
             for i in range(self.number_of_sensors):
                 self.trigger_measurement(i)
     
@@ -408,6 +429,9 @@ class HCSR04Cluster:
                     GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                         MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
                     logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    if time.time() > timeout:
+                        self.sensors[i].distance_cm = self.INVALID_READING
+                        return
                     pass
                 start = time.time()
             
@@ -418,9 +442,12 @@ class HCSR04Cluster:
                     GPIOB_state = self.pi.i2c_read_byte_data(self._h, 
                         MCP23017_REGISTER_MAPPING["GPIOB"][self._BANKING_MODE_IS_ACTIVE])
                     logging.debug(f'Waiting for echo pin of sensor {i} to turn HIGH: {bin(GPIOB_state)}')
+                    if time.time() > timeout:
+                        self.sensors[i].distance_cm = self.INVALID_READING
+                        return
                     pass
                 end = time.time()
-
+                
                 self.sensors[i].distance_cm = ((end - start) * 34300) / 2
 
             return
@@ -463,9 +490,28 @@ if __name__ == "__main__":
     import pigpio
     import ultrasonic_array_mcp23017
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--interrupt_pin",
+                        type=int,
+                        help="pin for interrupt driven operation"
+                       )
+    parser.add_argument("--sensor_configuration",
+                        type=int,
+                        help="bitmask for sensor configuration",
+                        default=0xFF
+                       )
+
+    args = parser.parse_args()
+    intb_gpio = args.interrupt_pin if args.interrupt_pin is not None else None
+    logging.debug(f'--interrupt_pin: {args.interrupt_pin}')
+    logging.debug(f'intb_gpio: {intb_gpio}')
+    sensor_config = args.sensor_configuration
+
     TIME=60.0
 
-    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = 14)
+    s = ultrasonic_array_mcp23017.HCSR04Cluster(INTB_GPIO = intb_gpio,
+                                                sensor_configuration = sensor_config
+                                               )
 
     stop = time.time() + TIME
 
