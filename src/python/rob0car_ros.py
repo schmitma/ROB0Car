@@ -79,7 +79,7 @@ class ROB0Car(Node):
 
         if msg.buttons[1] == 1:
             self._camera.home()
-
+        
         self._camera.pan(self._camera.pan_angle + msg.axes[2])
         self._camera.pan(self._camera.tilt_angle + msg.axes[3])
 

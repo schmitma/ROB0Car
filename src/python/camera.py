@@ -20,6 +20,9 @@ class Camera:
         self.pca9685 = PCA9685()
         self.pca9685.setPWMFreq(50)
 
+        self.pan_angle = 90
+        self.tilt_angle = 90
+
         self.home
 
     def pan(self, pan_angle):
