@@ -2,8 +2,8 @@
 import time
 from pca9685 import PCA9685
 
-TILT = 0
-PAN = 1
+PAN = 0
+TILT = 1
 
 pca9685 = PCA9685()
 try:
