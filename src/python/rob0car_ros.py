@@ -64,6 +64,8 @@ class ROB0Car(Node):
         self._steering.set_steering_dc(steering_dc)
 
     def _joy_callback(self, msg):
+        logging.debug(f'Joystick axes: {msg.axes}')
+        logging.debug(f'Joystick buttons: {msg.buttons}')
         self._steering.set_steering_perc(msg.axes[0] * -100)
         motor_speed_perc = msg.axes[1] * 100
         self.drive(motor_speed_perc, motor_speed_perc)
@@ -80,8 +82,10 @@ class ROB0Car(Node):
         if msg.buttons[1] == 1:
             self._camera.home()
         
-        self._camera.pan(self._camera.pan_angle + msg.axes[2])
-        self._camera.pan(self._camera.tilt_angle + msg.axes[3])
+        if msg.axes[2] != 0:
+            self._camera.pan(self._camera.pan_angle + msg.axes[2])
+        if msg.axes[3] != 0:
+            self._camera.pan(self._camera.tilt_angle + msg.axes[3])
 
     def _range_callback(self, msg):
         self.distance = msg.range

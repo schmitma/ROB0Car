@@ -16,7 +16,7 @@ MAX_PAN_ANGLE = 180
 
 class Camera:
     def __init__ (self):
-        logging.debug("Camera.__init__")
+        logging.debug("Camera.__init__()")
         self.pca9685 = PCA9685()
         self.pca9685.setPWMFreq(50)
 
@@ -26,14 +26,17 @@ class Camera:
         self.home
 
     def pan(self, pan_angle):
+        logging.debug("Camera.pan()")
         self.pan_angle = min(max(MIN_PAN_ANGLE, pan_angle), MAX_PAN_ANGLE)
         self.pca9685.setRotationAngle(PAN_CHANNEL, self.pan_angle)
 
     def tilt(self, tilt_angle):
+        logging.debug("Camera.tilt()")
         self.tilt_angle = min(max(MIN_TILT_ANGLE, tilt_angle), MAX_TILT_ANGLE)
         self.pca9685.setRotationAngle(TILT_CHANNEL, self.tilt_angle)
 
     def home(self):
+        logging.debug("Camera.home()")
         self.pan_angle = 90
         self.tilt_angle = 90
 
