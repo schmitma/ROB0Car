@@ -29,21 +29,27 @@ class PCA9685:
 
   def __init__(self, address=0x40, debug=False):
     self.pi=pigpio.pi()
+    if not self.pi.connected:
+      exit(0)
+
     self.address = address
     self.debug = debug
+
+    self._h = self.pi.i2c_open(1, self.address)
+
     if (self.debug):
       print("Reseting PCA9685")
     self.write(self.__MODE1, 0x00)
 	
   def write(self, reg, value):
     "Writes an 8-bit value to the specified register/address"
-    self.pi.i2c_write_byte_data(self.address, reg, value)
+    self.pi.i2c_write_byte_data(self._h, reg, value)
     if (self.debug):
       print("I2C: Write 0x%02X to register 0x%02X" % (value, reg))
 	  
   def read(self, reg):
     "Read an unsigned byte from the I2C device"
-    result = self.pi.i2c_read_byte_data(self.address, reg)
+    result = self.pi.i2c_read_byte_data(self._h, reg)
     if (self.debug):
       print("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" % (self.address, result & 0xFF, reg))
     return result
