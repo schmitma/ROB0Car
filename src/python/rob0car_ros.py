@@ -8,6 +8,8 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy, Range
 from motor import Motor
 from steering import Steering
+from camera import Camera
+
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -20,6 +22,8 @@ class ROB0Car(Node):
         self._leftMotor = Motor(13, 'PWM')
         self._rightMotor = Motor(5, 'PWM', True)
         self._steering = Steering(23)
+
+        self._camera = Camera()
 
         self.close_distance = 0.30 # start slowing down when obstacle within 30 cm is detected
         self.stop_distance = 0.10 # stop motion in direction where obstacle within 10 cm has been detected
@@ -72,6 +76,9 @@ class ROB0Car(Node):
 
         if self._rightMotor._isArmed == False and msg.buttons[0] == 1:
             self._rightMotor.arm()
+
+        self._camera.pan(self._camera.pan_angle + msg.axes[2])
+        self._camera.pan(self._camera.tilt_angle + msg.axes[3])
 
     def _range_callback(self, msg):
         self.distance = msg.range
