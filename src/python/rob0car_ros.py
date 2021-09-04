@@ -85,7 +85,7 @@ class ROB0Car(Node):
         if msg.axes[3] != 0:
             self._camera.pan(self._camera.pan_angle + msg.axes[3])
         if msg.axes[4] != 0:
-            self._camera.tilt(self._camera.tilt_angle + msg.axes[4])
+            self._camera.tilt(self._camera.tilt_angle + (msg.axes[4] * (-1)))
 
     def _range_callback(self, msg):
         self.distance = msg.range
