@@ -2,8 +2,8 @@
 import time
 from pca9685 import PCA9685
 
-PAN = 0
-TILT = 1
+TILT = 0
+PAN = 1
 
 pca9685 = PCA9685()
 try:
@@ -16,8 +16,8 @@ try:
         angle_tilt = int(input("Tilt angle [°]: "))
         angle_pan = int(input("Pan angle [°]: "))
 
-        pca9685.setRotationAngle(PAN, angle_tilt)  
-        pca9685.setRotationAngle(TILT, angle_pan)  
+        pca9685.setRotationAngle(TILT, angle_tilt)  
+        pca9685.setRotationAngle(PAN, angle_pan)
         # for i in range(10,170,1): 
         #     pca9685.setRotationAngle(1, i)
         #     if(i<80):
