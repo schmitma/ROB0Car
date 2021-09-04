@@ -2,7 +2,7 @@
 
 import time
 import math
-import smbus
+import pigpio
 
 # ============================================================================
 # Raspi PCA9685 16-Channel PWM Servo Driver
@@ -28,7 +28,7 @@ class PCA9685:
 
 
   def __init__(self, address=0x40, debug=False):
-    self.bus = smbus.SMBus(1)
+    self.pi=pigpio.pi()
     self.address = address
     self.debug = debug
     if (self.debug):
@@ -37,13 +37,13 @@ class PCA9685:
 	
   def write(self, reg, value):
     "Writes an 8-bit value to the specified register/address"
-    self.bus.write_byte_data(self.address, reg, value)
+    self.pi.i2c_write_byte_data(self.address, reg, value)
     if (self.debug):
       print("I2C: Write 0x%02X to register 0x%02X" % (value, reg))
 	  
   def read(self, reg):
     "Read an unsigned byte from the I2C device"
-    result = self.bus.read_byte_data(self.address, reg)
+    result = self.pi.i2c_read_byte_data(self.address, reg)
     if (self.debug):
       print("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" % (self.address, result & 0xFF, reg))
     return result
