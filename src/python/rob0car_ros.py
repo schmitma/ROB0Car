@@ -77,6 +77,9 @@ class ROB0Car(Node):
         if self._rightMotor._isArmed == False and msg.buttons[0] == 1:
             self._rightMotor.arm()
 
+        if msg.buttons[1] == 1:
+            self._camera.home()
+
         self._camera.pan(self._camera.pan_angle + msg.axes[2])
         self._camera.pan(self._camera.tilt_angle + msg.axes[3])
 
