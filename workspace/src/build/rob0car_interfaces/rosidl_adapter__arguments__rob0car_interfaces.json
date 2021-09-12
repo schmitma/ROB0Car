@@ -1,0 +1,6 @@
+{
+  "package_name": "rob0car_interfaces",
+  "non_idl_tuples": [
+    "/home/mexx/ROB0Car/workspace/src/rob0car_interfaces:msg/ESC.msg"
+  ]
+}

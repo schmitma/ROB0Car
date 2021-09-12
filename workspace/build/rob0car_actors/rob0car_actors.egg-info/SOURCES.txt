@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/rob0car_actors/rob0car_actors.egg-info/PKG-INFO
+../../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt
+../../build/rob0car_actors/rob0car_actors.egg-info/dependency_links.txt
+../../build/rob0car_actors/rob0car_actors.egg-info/entry_points.txt
+../../build/rob0car_actors/rob0car_actors.egg-info/requires.txt
+../../build/rob0car_actors/rob0car_actors.egg-info/top_level.txt
+../../build/rob0car_actors/rob0car_actors.egg-info/zip-safe
+resource/rob0car_actors
+rob0car_actors/__init__.py
+rob0car_actors/rob0car_actors.py
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

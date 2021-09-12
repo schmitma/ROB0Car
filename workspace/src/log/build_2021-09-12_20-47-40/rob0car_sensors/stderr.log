@@ -1,0 +1,2 @@
+/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors/ultrasonic_array_mcp23017.py:473: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+  while bitmask is not 1:

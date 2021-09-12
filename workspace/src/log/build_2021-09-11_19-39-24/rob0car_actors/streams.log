@@ -1,0 +1,36 @@
+[4.068s] Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log --single-version-externally-managed
+[7.706s] running egg_info
+[7.721s] writing ../build/rob0car_actors/rob0car_actors.egg-info/PKG-INFO
+[7.724s] writing dependency_links to ../build/rob0car_actors/rob0car_actors.egg-info/dependency_links.txt
+[7.730s] writing entry points to ../build/rob0car_actors/rob0car_actors.egg-info/entry_points.txt
+[7.732s] writing requirements to ../build/rob0car_actors/rob0car_actors.egg-info/requires.txt
+[7.738s] writing top-level names to ../build/rob0car_actors/rob0car_actors.egg-info/top_level.txt
+[8.441s] reading manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+[8.465s] writing manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+[8.469s] running build
+[8.469s] running build_py
+[8.488s] copying rob0car_actors/steering.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+[8.493s] copying rob0car_actors/pca9685.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+[8.497s] copying rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+[8.502s] copying rob0car_actors/camera_pan_tilt.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+[8.505s] copying rob0car_actors/motor.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+[8.513s] running install
+[8.528s] running install_lib
+[8.546s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/steering.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[8.548s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/pca9685.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[8.550s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[8.552s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/camera_pan_tilt.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[8.565s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/motor.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[8.582s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/steering.py to steering.cpython-38.pyc
+[8.618s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/pca9685.py to pca9685.cpython-38.pyc
+[8.630s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/rob0car_actors.py to rob0car_actors.cpython-38.pyc
+[8.642s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/camera_pan_tilt.py to camera_pan_tilt.cpython-38.pyc
+[8.645s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/motor.py to motor.cpython-38.pyc
+[8.656s] running install_data
+[8.677s] running install_egg_info
+[8.701s] removing '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info' (and everything under it)
+[8.706s] Copying ../build/rob0car_actors/rob0car_actors.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info
+[8.715s] running install_scripts
+[8.957s] Installing rob0car_actors script to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/rob0car_actors
+[8.993s] writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log'
+[9.339s] Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log --single-version-externally-managed

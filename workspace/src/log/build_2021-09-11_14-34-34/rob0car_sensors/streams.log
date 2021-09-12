@@ -1,0 +1,37 @@
+[6.929s] Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_sensors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log --single-version-externally-managed
+[9.536s] running egg_info
+[9.552s] creating ../build/rob0car_sensors/rob0car_sensors.egg-info
+[9.561s] writing ../build/rob0car_sensors/rob0car_sensors.egg-info/PKG-INFO
+[9.568s] writing dependency_links to ../build/rob0car_sensors/rob0car_sensors.egg-info/dependency_links.txt
+[9.570s] writing entry points to ../build/rob0car_sensors/rob0car_sensors.egg-info/entry_points.txt
+[9.572s] writing requirements to ../build/rob0car_sensors/rob0car_sensors.egg-info/requires.txt
+[9.574s] writing top-level names to ../build/rob0car_sensors/rob0car_sensors.egg-info/top_level.txt
+[9.596s] writing manifest file '../build/rob0car_sensors/rob0car_sensors.egg-info/SOURCES.txt'
+[10.089s] reading manifest file '../build/rob0car_sensors/rob0car_sensors.egg-info/SOURCES.txt'
+[10.104s] writing manifest file '../build/rob0car_sensors/rob0car_sensors.egg-info/SOURCES.txt'
+[10.108s] running build
+[10.109s] running build_py
+[10.114s] creating /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build
+[10.116s] creating /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib
+[10.120s] creating /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors
+[10.120s] copying rob0car_sensors/rob0car_sensors.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors
+[10.121s] copying rob0car_sensors/__init__.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors
+[10.123s] running install
+[10.132s] running install_lib
+[10.139s] creating /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors
+[10.143s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors/rob0car_sensors.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors
+[10.148s] copying /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors/__init__.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors
+[10.150s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors/rob0car_sensors.py to rob0car_sensors.cpython-38.pyc
+[10.186s] byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors/__init__.py to __init__.cpython-38.pyc
+[10.197s] running install_data
+[10.201s] creating /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/ament_index
+[10.202s] creating /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/ament_index/resource_index
+[10.204s] creating /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/ament_index/resource_index/packages
+[10.205s] copying resource/rob0car_sensors -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/ament_index/resource_index/packages
+[10.205s] copying package.xml -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors
+[10.206s] running install_egg_info
+[10.230s] Copying ../build/rob0car_sensors/rob0car_sensors.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors-0.0.0-py3.8.egg-info
+[10.240s] running install_scripts
+[10.631s] Installing rob0car_sensors script to /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/rob0car_sensors
+[10.634s] writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log'
+[11.123s] Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_sensors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log --single-version-externally-managed

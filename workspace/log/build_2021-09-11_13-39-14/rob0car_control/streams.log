@@ -1,0 +1,37 @@
+[2.675s] Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_control': PYTHONPATH=/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rob0car_control build --build-base /home/mexx/ROB0Car/workspace/build/rob0car_control/build install --prefix /home/mexx/ROB0Car/workspace/install/rob0car_control --record /home/mexx/ROB0Car/workspace/build/rob0car_control/install.log --single-version-externally-managed
+[4.115s] running egg_info
+[4.124s] creating ../../build/rob0car_control/rob0car_control.egg-info
+[4.127s] writing ../../build/rob0car_control/rob0car_control.egg-info/PKG-INFO
+[4.153s] writing dependency_links to ../../build/rob0car_control/rob0car_control.egg-info/dependency_links.txt
+[4.164s] writing entry points to ../../build/rob0car_control/rob0car_control.egg-info/entry_points.txt
+[4.172s] writing requirements to ../../build/rob0car_control/rob0car_control.egg-info/requires.txt
+[4.174s] writing top-level names to ../../build/rob0car_control/rob0car_control.egg-info/top_level.txt
+[4.238s] writing manifest file '../../build/rob0car_control/rob0car_control.egg-info/SOURCES.txt'
+[5.047s] reading manifest file '../../build/rob0car_control/rob0car_control.egg-info/SOURCES.txt'
+[5.067s] writing manifest file '../../build/rob0car_control/rob0car_control.egg-info/SOURCES.txt'
+[5.072s] running build
+[5.073s] running build_py
+[5.074s] creating /home/mexx/ROB0Car/workspace/build/rob0car_control/build
+[5.075s] creating /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib
+[5.075s] creating /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib/rob0car_control
+[5.076s] copying rob0car_control/rob0car_control.py -> /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib/rob0car_control
+[5.086s] copying rob0car_control/__init__.py -> /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib/rob0car_control
+[5.089s] running install
+[5.107s] running install_lib
+[5.126s] creating /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control
+[5.128s] copying /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib/rob0car_control/rob0car_control.py -> /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control
+[5.130s] copying /home/mexx/ROB0Car/workspace/build/rob0car_control/build/lib/rob0car_control/__init__.py -> /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control
+[5.135s] byte-compiling /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control/rob0car_control.py to rob0car_control.cpython-38.pyc
+[5.161s] byte-compiling /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control/__init__.py to __init__.cpython-38.pyc
+[5.164s] running install_data
+[5.171s] creating /home/mexx/ROB0Car/workspace/install/rob0car_control/share/ament_index
+[5.172s] creating /home/mexx/ROB0Car/workspace/install/rob0car_control/share/ament_index/resource_index
+[5.174s] creating /home/mexx/ROB0Car/workspace/install/rob0car_control/share/ament_index/resource_index/packages
+[5.175s] copying resource/rob0car_control -> /home/mexx/ROB0Car/workspace/install/rob0car_control/share/ament_index/resource_index/packages
+[5.176s] copying package.xml -> /home/mexx/ROB0Car/workspace/install/rob0car_control/share/rob0car_control
+[5.177s] running install_egg_info
+[5.213s] Copying ../../build/rob0car_control/rob0car_control.egg-info to /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages/rob0car_control-0.0.0-py3.8.egg-info
+[5.232s] running install_scripts
+[5.434s] Installing rob0car_control script to /home/mexx/ROB0Car/workspace/install/rob0car_control/lib/rob0car_control
+[5.441s] writing list of installed files to '/home/mexx/ROB0Car/workspace/build/rob0car_control/install.log'
+[5.573s] Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_control' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rob0car_control build --build-base /home/mexx/ROB0Car/workspace/build/rob0car_control/build install --prefix /home/mexx/ROB0Car/workspace/install/rob0car_control --record /home/mexx/ROB0Car/workspace/build/rob0car_control/install.log --single-version-externally-managed

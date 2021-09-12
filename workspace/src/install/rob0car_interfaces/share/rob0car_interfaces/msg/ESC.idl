@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from rob0car_interfaces/msg/ESC.msg
+// generated code does not contain a copyright notice
+
+
+module rob0car_interfaces {
+  module msg {
+    struct ESC {
+      uint8 channel;
+
+      int8 throttle;
+
+      boolean arm;
+    };
+  };
+};

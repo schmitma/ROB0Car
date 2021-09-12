@@ -1,0 +1,50 @@
+[0.267s] Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/mexx/ROB0Car/workspace/src/rob0car_launch -DCMAKE_INSTALL_PREFIX=/home/mexx/ROB0Car/workspace/src/install/rob0car_launch
+[1.895s] -- The C compiler identification is GNU 9.3.0
+[3.781s] -- The CXX compiler identification is GNU 9.3.0
+[4.067s] -- Check for working C compiler: /usr/bin/cc
+[6.325s] -- Check for working C compiler: /usr/bin/cc -- works
+[6.407s] -- Detecting C compiler ABI info
+[8.472s] -- Detecting C compiler ABI info - done
+[8.945s] -- Detecting C compile features
+[8.954s] -- Detecting C compile features - done
+[9.034s] -- Check for working CXX compiler: /usr/bin/c++
+[11.061s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[11.075s] -- Detecting CXX compiler ABI info
+[12.507s] -- Detecting CXX compiler ABI info - done
+[13.025s] -- Detecting CXX compile features
+[13.040s] -- Detecting CXX compile features - done
+[13.102s] -- Found ament_cmake: 0.9.9 (/opt/ros/foxy/share/ament_cmake/cmake)
+[13.397s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[13.403s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[19.290s] -- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[22.345s] -- Added test 'copyright' to check source files copyright and LICENSE
+[22.394s] -- Added test 'flake8' to check Python code syntax and style conventions
+[22.413s] -- Added test 'lint_cmake' to check CMake code style
+[22.427s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[22.440s] -- Added test 'xmllint' to check XML markup files
+[22.535s] -- Configuring done
+[22.662s] -- Generating done
+[22.742s] -- Build files have been written to: /home/mexx/ROB0Car/workspace/src/build/rob0car_launch
+[22.894s] Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch' returned '0': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/mexx/ROB0Car/workspace/src/rob0car_launch -DCMAKE_INSTALL_PREFIX=/home/mexx/ROB0Car/workspace/src/install/rob0car_launch
+[22.946s] Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_launch -- -j1 -l1
+[24.790s] Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch' returned '0': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_launch -- -j1 -l1
+[25.698s] Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_launch
+[26.123s] -- Install configuration: ""
+[26.130s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/launch
+[26.141s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/launch/rob0car.launch.py
+[26.169s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/package_run_dependencies/rob0car_launch
+[26.179s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/parent_prefix_path/rob0car_launch
+[26.194s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/ament_prefix_path.sh
+[26.205s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/ament_prefix_path.dsv
+[26.213s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/path.sh
+[26.237s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/path.dsv
+[26.241s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.bash
+[26.251s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.sh
+[26.265s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.zsh
+[26.274s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.dsv
+[26.291s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.dsv
+[26.303s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/packages/rob0car_launch
+[26.305s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/cmake/rob0car_launchConfig.cmake
+[26.312s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/cmake/rob0car_launchConfig-version.cmake
+[26.317s] -- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.xml
+[26.408s] Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch' returned '0': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_launch

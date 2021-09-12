@@ -1,0 +1,37 @@
+[1.700s] Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors': PYTHONPATH=/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/build/rob0car_actors/install.log --single-version-externally-managed
+[2.848s] running egg_info
+[2.855s] creating ../../build/rob0car_actors/rob0car_actors.egg-info
+[2.857s] writing ../../build/rob0car_actors/rob0car_actors.egg-info/PKG-INFO
+[2.859s] writing dependency_links to ../../build/rob0car_actors/rob0car_actors.egg-info/dependency_links.txt
+[2.860s] writing entry points to ../../build/rob0car_actors/rob0car_actors.egg-info/entry_points.txt
+[2.862s] writing requirements to ../../build/rob0car_actors/rob0car_actors.egg-info/requires.txt
+[2.863s] writing top-level names to ../../build/rob0car_actors/rob0car_actors.egg-info/top_level.txt
+[2.871s] writing manifest file '../../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+[3.076s] reading manifest file '../../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+[3.098s] writing manifest file '../../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+[3.104s] running build
+[3.105s] running build_py
+[3.107s] creating /home/mexx/ROB0Car/workspace/build/rob0car_actors/build
+[3.108s] creating /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib
+[3.111s] creating /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib/rob0car_actors
+[3.112s] copying rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib/rob0car_actors
+[3.114s] copying rob0car_actors/__init__.py -> /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib/rob0car_actors
+[3.117s] running install
+[3.122s] running install_lib
+[3.132s] creating /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[3.132s] copying /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib/rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[3.134s] copying /home/mexx/ROB0Car/workspace/build/rob0car_actors/build/lib/rob0car_actors/__init__.py -> /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+[3.138s] byte-compiling /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/rob0car_actors.py to rob0car_actors.cpython-38.pyc
+[3.154s] byte-compiling /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/__init__.py to __init__.cpython-38.pyc
+[3.155s] running install_data
+[3.164s] creating /home/mexx/ROB0Car/workspace/install/rob0car_actors/share/ament_index
+[3.165s] creating /home/mexx/ROB0Car/workspace/install/rob0car_actors/share/ament_index/resource_index
+[3.165s] creating /home/mexx/ROB0Car/workspace/install/rob0car_actors/share/ament_index/resource_index/packages
+[3.167s] copying resource/rob0car_actors -> /home/mexx/ROB0Car/workspace/install/rob0car_actors/share/ament_index/resource_index/packages
+[3.168s] copying package.xml -> /home/mexx/ROB0Car/workspace/install/rob0car_actors/share/rob0car_actors
+[3.170s] running install_egg_info
+[3.195s] Copying ../../build/rob0car_actors/rob0car_actors.egg-info to /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info
+[3.212s] running install_scripts
+[3.532s] Installing rob0car_actors script to /home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/rob0car_actors
+[3.534s] writing list of installed files to '/home/mexx/ROB0Car/workspace/build/rob0car_actors/install.log'
+[3.637s] Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/build/rob0car_actors/install.log --single-version-externally-managed

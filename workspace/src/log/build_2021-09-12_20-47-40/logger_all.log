@@ -1,0 +1,379 @@
+[1.013s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.013s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ff21130d4f0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=1, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ff21130d4f0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7ff21130da30>)
+[1.034s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.035s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.036s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.037s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.038s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.038s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.039s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/mexx/ROB0Car/workspace/src'
+[1.040s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.040s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.041s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.041s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.041s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.041s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.041s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.043s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.043s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.084s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.093s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.093s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.093s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['ignore', 'ignore_ament_install']
+[1.093s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'ignore'
+[1.094s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'ignore_ament_install'
+[1.095s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['colcon_pkg']
+[1.096s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'colcon_pkg'
+[1.096s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['colcon_meta']
+[1.096s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'colcon_meta'
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['ros']
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'ros'
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['cmake', 'python']
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'cmake'
+[1.097s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'python'
+[1.098s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extensions ['python_setup_py']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(examples) by extension 'python_setup_py'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.100s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['ignore', 'ignore_ament_install']
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'ignore'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'ignore_ament_install'
+[1.102s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['colcon_pkg']
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'colcon_pkg'
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['colcon_meta']
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'colcon_meta'
+[1.105s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['ros']
+[1.105s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'ros'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['cmake', 'python']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'cmake'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'python'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extensions ['python_setup_py']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(python) by extension 'python_setup_py'
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extensions ['ignore', 'ignore_ament_install']
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extension 'ignore'
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extension 'ignore_ament_install'
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extensions ['colcon_pkg']
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extension 'colcon_pkg'
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extensions ['colcon_meta']
+[1.107s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extension 'colcon_meta'
+[1.108s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extensions ['ros']
+[1.108s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_actors) by extension 'ros'
+[1.116s] DEBUG:colcon.colcon_core.package_identification:Package 'rob0car_actors' with type 'ros.ament_python' and name 'rob0car_actors'
+[1.117s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extensions ['ignore', 'ignore_ament_install']
+[1.118s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extension 'ignore'
+[1.118s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extension 'ignore_ament_install'
+[1.119s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extensions ['colcon_pkg']
+[1.119s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extension 'colcon_pkg'
+[1.120s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extensions ['colcon_meta']
+[1.121s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extension 'colcon_meta'
+[1.121s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extensions ['ros']
+[1.122s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_control) by extension 'ros'
+[1.123s] DEBUG:colcon.colcon_core.package_identification:Package 'rob0car_control' with type 'ros.ament_python' and name 'rob0car_control'
+[1.124s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[1.124s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extension 'ignore'
+[1.124s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extension 'ignore_ament_install'
+[1.124s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extensions ['colcon_pkg']
+[1.124s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extension 'colcon_pkg'
+[1.125s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extensions ['colcon_meta']
+[1.125s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extension 'colcon_meta'
+[1.125s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extensions ['ros']
+[1.125s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_interfaces) by extension 'ros'
+[1.128s] DEBUG:colcon.colcon_core.package_identification:Package 'rob0car_interfaces' with type 'ros.ament_cmake' and name 'rob0car_interfaces'
+[1.129s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extensions ['ignore', 'ignore_ament_install']
+[1.130s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extension 'ignore'
+[1.131s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extension 'ignore_ament_install'
+[1.131s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extensions ['colcon_pkg']
+[1.132s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extension 'colcon_pkg'
+[1.132s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extensions ['colcon_meta']
+[1.133s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extension 'colcon_meta'
+[1.134s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extensions ['ros']
+[1.134s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_launch) by extension 'ros'
+[1.136s] DEBUG:colcon.colcon_core.package_identification:Package 'rob0car_launch' with type 'ros.ament_cmake' and name 'rob0car_launch'
+[1.136s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extensions ['ignore', 'ignore_ament_install']
+[1.136s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extension 'ignore'
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extension 'ignore_ament_install'
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extensions ['colcon_pkg']
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extension 'colcon_pkg'
+[1.137s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extensions ['colcon_meta']
+[1.142s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extension 'colcon_meta'
+[1.143s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extensions ['ros']
+[1.143s] Level 1:colcon.colcon_core.package_identification:_identify(rob0car_sensors) by extension 'ros'
+[1.146s] DEBUG:colcon.colcon_core.package_identification:Package 'rob0car_sensors' with type 'ros.ament_python' and name 'rob0car_sensors'
+[1.146s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.147s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.148s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.148s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.149s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.207s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.208s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.209s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.210s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.210s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.211s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.211s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.212s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.212s] Level 5:colcon.colcon_core.verb:set package 'rob0car_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.213s] DEBUG:colcon.colcon_core.verb:Building package 'rob0car_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces', 'merge_install': False, 'path': '/home/mexx/ROB0Car/workspace/src/rob0car_interfaces', 'symlink_install': False, 'test_result_base': None}
+[1.222s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_args' from command line to 'None'
+[1.223s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_target' from command line to 'None'
+[1.223s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.224s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_clean_cache' from command line to 'False'
+[1.225s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_clean_first' from command line to 'False'
+[1.225s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'cmake_force_configure' from command line to 'False'
+[1.226s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'ament_cmake_args' from command line to 'None'
+[1.226s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'catkin_cmake_args' from command line to 'None'
+[1.226s] Level 5:colcon.colcon_core.verb:set package 'rob0car_sensors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.227s] DEBUG:colcon.colcon_core.verb:Building package 'rob0car_sensors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors', 'merge_install': False, 'path': '/home/mexx/ROB0Car/workspace/src/rob0car_sensors', 'symlink_install': False, 'test_result_base': None}
+[1.236s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_args' from command line to 'None'
+[1.237s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_target' from command line to 'None'
+[1.238s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.238s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_clean_cache' from command line to 'False'
+[1.239s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_clean_first' from command line to 'False'
+[1.239s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'cmake_force_configure' from command line to 'False'
+[1.240s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'ament_cmake_args' from command line to 'None'
+[1.240s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'catkin_cmake_args' from command line to 'None'
+[1.241s] Level 5:colcon.colcon_core.verb:set package 'rob0car_actors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.241s] DEBUG:colcon.colcon_core.verb:Building package 'rob0car_actors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors', 'merge_install': False, 'path': '/home/mexx/ROB0Car/workspace/src/rob0car_actors', 'symlink_install': False, 'test_result_base': None}
+[1.250s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_args' from command line to 'None'
+[1.251s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_target' from command line to 'None'
+[1.252s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.252s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_clean_cache' from command line to 'False'
+[1.253s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_clean_first' from command line to 'False'
+[1.253s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'cmake_force_configure' from command line to 'False'
+[1.254s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'ament_cmake_args' from command line to 'None'
+[1.254s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'catkin_cmake_args' from command line to 'None'
+[1.255s] Level 5:colcon.colcon_core.verb:set package 'rob0car_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.255s] DEBUG:colcon.colcon_core.verb:Building package 'rob0car_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/mexx/ROB0Car/workspace/src/build/rob0car_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/mexx/ROB0Car/workspace/src/install/rob0car_control', 'merge_install': False, 'path': '/home/mexx/ROB0Car/workspace/src/rob0car_control', 'symlink_install': False, 'test_result_base': None}
+[1.267s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_args' from command line to 'None'
+[1.268s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_target' from command line to 'None'
+[1.268s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.269s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_clean_cache' from command line to 'False'
+[1.270s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_clean_first' from command line to 'False'
+[1.270s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'cmake_force_configure' from command line to 'False'
+[1.271s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'ament_cmake_args' from command line to 'None'
+[1.272s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'catkin_cmake_args' from command line to 'None'
+[1.272s] Level 5:colcon.colcon_core.verb:set package 'rob0car_launch' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.272s] DEBUG:colcon.colcon_core.verb:Building package 'rob0car_launch' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch', 'merge_install': False, 'path': '/home/mexx/ROB0Car/workspace/src/rob0car_launch', 'symlink_install': False, 'test_result_base': None}
+[1.274s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.279s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.280s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/mexx/ROB0Car/workspace/src/rob0car_interfaces' with build type 'ament_cmake'
+[1.280s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/mexx/ROB0Car/workspace/src/rob0car_interfaces'
+[1.321s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.326s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.331s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.359s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[1.454s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces -- -j1 -l1
+[6.895s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces -- -j1 -l1
+[8.180s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces
+[9.410s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_interfaces)
+[9.415s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_interfaces
+[9.458s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces' for CMake module files
+[9.478s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces' for CMake config files
+[9.493s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'cmake_prefix_path')
+[9.503s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.ps1'
+[9.525s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.dsv'
+[9.528s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.sh'
+[9.543s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib'
+[9.543s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'ld_library_path_lib')
+[9.545s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.ps1'
+[9.570s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.dsv'
+[9.589s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.sh'
+[9.601s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/bin'
+[9.602s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/pkgconfig/rob0car_interfaces.pc'
+[9.602s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages'
+[9.602s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'pythonpath')
+[9.604s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.ps1'
+[9.619s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.dsv'
+[9.621s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.sh'
+[9.636s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.ps1'
+[9.663s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.dsv'
+[9.665s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.sh'
+[9.711s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.bash'
+[9.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.zsh'
+[9.741s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/colcon-core/packages/rob0car_interfaces)
+[10.945s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_interfaces)
+[10.967s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces' for CMake module files
+[10.970s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces' for CMake config files
+[10.979s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'cmake_prefix_path')
+[10.986s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.ps1'
+[10.995s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.dsv'
+[11.002s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/cmake_prefix_path.sh'
+[11.006s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib'
+[11.006s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'ld_library_path_lib')
+[11.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.ps1'
+[11.029s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.dsv'
+[11.042s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/ld_library_path_lib.sh'
+[11.047s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/bin'
+[11.048s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/pkgconfig/rob0car_interfaces.pc'
+[11.048s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages'
+[11.048s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_interfaces', 'pythonpath')
+[11.061s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.ps1'
+[11.072s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.dsv'
+[11.082s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/hook/pythonpath.sh'
+[11.089s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.ps1'
+[11.103s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.dsv'
+[11.105s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.sh'
+[11.119s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.bash'
+[11.126s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/rob0car_interfaces/package.zsh'
+[11.145s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/share/colcon-core/packages/rob0car_interfaces)
+[11.168s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors' with build type 'ament_python'
+[11.170s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_sensors', 'ament_prefix_path')
+[11.172s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/ament_prefix_path.ps1'
+[11.190s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/ament_prefix_path.dsv'
+[11.193s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/ament_prefix_path.sh'
+[11.204s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[11.204s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.254s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[15.863s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors'
+[15.874s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[15.875s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[15.911s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[15.972s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_sensors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log --single-version-externally-managed
+[20.012s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_sensors' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_sensors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log --single-version-externally-managed
+[20.016s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors' for CMake module files
+[20.042s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors' for CMake config files
+[20.048s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib'
+[20.049s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/bin'
+[20.067s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/pkgconfig/rob0car_sensors.pc'
+[20.067s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages'
+[20.067s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_sensors', 'pythonpath')
+[20.069s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/pythonpath.ps1'
+[20.089s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/pythonpath.dsv'
+[20.092s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/hook/pythonpath.sh'
+[20.098s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_sensors)
+[20.120s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/package.ps1'
+[20.138s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/package.dsv'
+[20.149s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/package.sh'
+[20.166s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/package.bash'
+[20.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors/package.zsh'
+[20.175s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/colcon-core/packages/rob0car_sensors)
+[20.188s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/mexx/ROB0Car/workspace/src/rob0car_actors' with build type 'ament_python'
+[20.192s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_actors', 'ament_prefix_path')
+[20.193s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/ament_prefix_path.ps1'
+[20.206s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/ament_prefix_path.dsv'
+[20.214s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/ament_prefix_path.sh'
+[20.231s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[20.231s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[20.259s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[24.630s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/mexx/ROB0Car/workspace/src/rob0car_actors'
+[24.638s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[24.643s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[24.694s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[24.804s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log --single-version-externally-managed
+[30.536s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_actors' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_actors build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_actors --record /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log --single-version-externally-managed
+[30.558s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors' for CMake module files
+[30.576s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors' for CMake config files
+[30.597s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib'
+[30.601s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/bin'
+[30.602s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/pkgconfig/rob0car_actors.pc'
+[30.602s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages'
+[30.602s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_actors', 'pythonpath')
+[30.604s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/pythonpath.ps1'
+[30.631s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/pythonpath.dsv'
+[30.644s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/hook/pythonpath.sh'
+[30.653s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_actors)
+[30.676s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/package.ps1'
+[30.701s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/package.dsv'
+[30.714s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/package.sh'
+[30.718s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/package.bash'
+[30.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors/package.zsh'
+[30.734s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/colcon-core/packages/rob0car_actors)
+[30.748s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/mexx/ROB0Car/workspace/src/rob0car_control' with build type 'ament_python'
+[30.751s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_control', 'ament_prefix_path')
+[30.758s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/ament_prefix_path.ps1'
+[30.768s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/ament_prefix_path.dsv'
+[30.778s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/ament_prefix_path.sh'
+[30.784s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[30.784s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[30.825s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[33.640s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/mexx/ROB0Car/workspace/src/rob0car_control'
+[33.645s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[33.655s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[33.696s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[33.788s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/rob0car_control': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_control build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_control/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_control --record /home/mexx/ROB0Car/workspace/src/build/rob0car_control/install.log --single-version-externally-managed
+[37.563s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control' for CMake module files
+[37.573s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/rob0car_control' returned '0': PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/rob0car_control build --build-base /home/mexx/ROB0Car/workspace/src/build/rob0car_control/build install --prefix /home/mexx/ROB0Car/workspace/src/install/rob0car_control --record /home/mexx/ROB0Car/workspace/src/build/rob0car_control/install.log --single-version-externally-managed
+[37.585s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control' for CMake config files
+[37.591s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib'
+[37.592s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/bin'
+[37.592s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/pkgconfig/rob0car_control.pc'
+[37.592s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages'
+[37.592s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_control', 'pythonpath')
+[37.610s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/pythonpath.ps1'
+[37.622s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/pythonpath.dsv'
+[37.630s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/hook/pythonpath.sh'
+[37.640s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_control)
+[37.650s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/package.ps1'
+[37.667s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/package.dsv'
+[37.686s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/package.sh'
+[37.718s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/package.bash'
+[37.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/rob0car_control/package.zsh'
+[37.745s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_control/share/colcon-core/packages/rob0car_control)
+[37.756s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/mexx/ROB0Car/workspace/src/rob0car_launch' with build type 'ament_cmake'
+[37.757s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/mexx/ROB0Car/workspace/src/rob0car_launch'
+[37.779s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[37.779s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[37.856s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[38.079s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_launch -- -j1 -l1
+[39.169s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch' returned '0': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/mexx/ROB0Car/workspace/src/build/rob0car_launch -- -j1 -l1
+[39.857s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_launch
+[40.146s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_launch)
+[40.149s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch' for CMake module files
+[40.156s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch' returned '0': AMENT_PREFIX_PATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy PYTHONPATH=/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_interfaces/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/mexx/ROB0Car/workspace/src/build/rob0car_launch
+[40.157s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch' for CMake config files
+[40.162s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_launch', 'cmake_prefix_path')
+[40.164s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.ps1'
+[40.178s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.dsv'
+[40.191s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.sh'
+[40.211s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/bin'
+[40.212s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/lib/pkgconfig/rob0car_launch.pc'
+[40.212s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/lib/python3.8/site-packages'
+[40.227s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.ps1'
+[40.234s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.dsv'
+[40.239s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.sh'
+[40.250s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.bash'
+[40.253s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.zsh'
+[40.255s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/colcon-core/packages/rob0car_launch)
+[40.628s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rob0car_launch)
+[40.646s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch' for CMake module files
+[40.651s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch' for CMake config files
+[40.660s] Level 1:colcon.colcon_core.shell:create_environment_hook('rob0car_launch', 'cmake_prefix_path')
+[40.668s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.ps1'
+[40.683s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.dsv'
+[40.688s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/hook/cmake_prefix_path.sh'
+[40.695s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/bin'
+[40.704s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/lib/pkgconfig/rob0car_launch.pc'
+[40.704s] Level 1:colcon.colcon_core.environment:checking '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/lib/python3.8/site-packages'
+[40.714s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.ps1'
+[40.728s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.dsv'
+[40.735s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.sh'
+[40.745s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.bash'
+[40.750s] INFO:colcon.colcon_core.shell:Creating package script '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.zsh'
+[40.755s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/colcon-core/packages/rob0car_launch)
+[40.766s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[40.771s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[40.771s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[40.773s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[40.876s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[40.877s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[40.877s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[41.091s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[41.095s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mexx/ROB0Car/workspace/src/install/local_setup.ps1'
+[41.113s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/mexx/ROB0Car/workspace/src/install/_local_setup_util_ps1.py'
+[41.141s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mexx/ROB0Car/workspace/src/install/setup.ps1'
+[41.202s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mexx/ROB0Car/workspace/src/install/local_setup.sh'
+[41.217s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/mexx/ROB0Car/workspace/src/install/_local_setup_util_sh.py'
+[41.218s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mexx/ROB0Car/workspace/src/install/setup.sh'
+[41.288s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mexx/ROB0Car/workspace/src/install/local_setup.bash'
+[41.298s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mexx/ROB0Car/workspace/src/install/setup.bash'
+[41.355s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mexx/ROB0Car/workspace/src/install/local_setup.zsh'
+[41.359s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mexx/ROB0Car/workspace/src/install/setup.zsh'

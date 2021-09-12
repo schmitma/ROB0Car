@@ -1,0 +1,6 @@
+source;share/rob0car_actors/hook/pythonpath.ps1
+source;share/rob0car_actors/hook/pythonpath.dsv
+source;share/rob0car_actors/hook/pythonpath.sh
+source;share/rob0car_actors/hook/ament_prefix_path.ps1
+source;share/rob0car_actors/hook/ament_prefix_path.dsv
+source;share/rob0car_actors/hook/ament_prefix_path.sh

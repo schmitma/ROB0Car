@@ -1,0 +1,2 @@
+source;share/rob0car_launch/environment/ament_prefix_path.sh
+source;share/rob0car_launch/environment/path.sh

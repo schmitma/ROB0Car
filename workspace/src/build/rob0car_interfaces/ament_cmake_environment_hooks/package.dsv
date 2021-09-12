@@ -1,0 +1,4 @@
+source;share/rob0car_interfaces/local_setup.bash
+source;share/rob0car_interfaces/local_setup.dsv
+source;share/rob0car_interfaces/local_setup.sh
+source;share/rob0car_interfaces/local_setup.zsh

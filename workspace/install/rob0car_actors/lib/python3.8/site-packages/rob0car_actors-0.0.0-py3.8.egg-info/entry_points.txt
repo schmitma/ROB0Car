@@ -1,0 +1,3 @@
+[console_scripts]
+rob0car_actors = rob0car_actors.rob0car_actors:main
+

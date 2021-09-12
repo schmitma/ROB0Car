@@ -1,0 +1,383 @@
+[0.000000] (-) TimerEvent: {}
+[0.016370] (rob0car_actors) JobQueued: {'identifier': 'rob0car_actors', 'dependencies': OrderedDict()}
+[0.016517] (rob0car_control) JobQueued: {'identifier': 'rob0car_control', 'dependencies': OrderedDict()}
+[0.019632] (rob0car_sensors) JobQueued: {'identifier': 'rob0car_sensors', 'dependencies': OrderedDict()}
+[0.019927] (rob0car_launch) JobQueued: {'identifier': 'rob0car_launch', 'dependencies': OrderedDict([('rob0car_actors', '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors'), ('rob0car_control', '/home/mexx/ROB0Car/workspace/src/install/rob0car_control'), ('rob0car_sensors', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors')])}
+[0.020167] (rob0car_actors) JobStarted: {'identifier': 'rob0car_actors'}
+[0.100219] (-) TimerEvent: {}
+[0.250648] (-) TimerEvent: {}
+[0.358671] (-) TimerEvent: {}
+[0.463334] (-) TimerEvent: {}
+[0.566363] (-) TimerEvent: {}
+[0.668777] (-) TimerEvent: {}
+[0.770799] (-) TimerEvent: {}
+[0.873271] (-) TimerEvent: {}
+[0.975466] (-) TimerEvent: {}
+[1.080311] (-) TimerEvent: {}
+[1.182829] (-) TimerEvent: {}
+[1.285201] (-) TimerEvent: {}
+[1.391597] (-) TimerEvent: {}
+[1.495087] (-) TimerEvent: {}
+[1.598574] (-) TimerEvent: {}
+[1.701053] (-) TimerEvent: {}
+[1.806045] (-) TimerEvent: {}
+[1.908530] (-) TimerEvent: {}
+[2.011544] (-) TimerEvent: {}
+[2.114563] (-) TimerEvent: {}
+[2.218447] (-) TimerEvent: {}
+[2.321569] (-) TimerEvent: {}
+[2.425876] (-) TimerEvent: {}
+[2.532807] (-) TimerEvent: {}
+[2.635313] (-) TimerEvent: {}
+[2.738283] (-) TimerEvent: {}
+[2.841222] (-) TimerEvent: {}
+[2.944686] (-) TimerEvent: {}
+[3.047588] (-) TimerEvent: {}
+[3.150729] (-) TimerEvent: {}
+[3.253689] (-) TimerEvent: {}
+[3.356624] (-) TimerEvent: {}
+[3.460100] (-) TimerEvent: {}
+[3.563460] (-) TimerEvent: {}
+[3.670810] (-) TimerEvent: {}
+[3.774538] (-) TimerEvent: {}
+[3.870636] (rob0car_actors) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/rob0car_actors', 'build', '--build-base', '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build', 'install', '--prefix', '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors', '--record', '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log', '--single-version-externally-managed'], 'cwd': '/home/mexx/ROB0Car/workspace/src/rob0car_actors', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mexx', 'LC_TIME': 'de_DE.UTF-8', 'SSH_AGENT_PID': '1875', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/mexx', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'OLDPWD': '/home/mexx/ROB0Car/workspace/src/rob0car_launch', 'TERM_PROGRAM_VERSION': '1.60.0', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'de_DE.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '1657', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2732', '_colcon_cd_root': '/home/mexx/ros2_install', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install:/home/mexx/ROB0Car/workspace/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'mexx', 'JOURNAL_STREAM': '8:32319', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mexx', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models:/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/mexx/.local/bin:/opt/ros/foxy/bin:/home/mexx/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/UbuntuVM:@/tmp/.ICE-unix/1922,unix/UbuntuVM:/tmp/.ICE-unix/1922', 'INVOCATION_ID': '509832081a9648379f65e768ea2952cf', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'de_DE.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'LC_TELEPHONE': 'de_DE.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-33af4c6695.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'LC_NAME': 'de_DE.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'de_DE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'de_DE.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors', 'TURTLEBOT3_MODEL': 'waffle_pi', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'de_DE.UTF-8', 'BREAKPAD_DUMP_LOCATION': '/home/mexx/.config/Code/exthost Crash Reports', 'LC_PAPER': 'de_DE.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch'}, 'shell': False}
+[3.878310] (-) TimerEvent: {}
+[3.983217] (-) TimerEvent: {}
+[4.087612] (-) TimerEvent: {}
+[4.190118] (-) TimerEvent: {}
+[4.292374] (-) TimerEvent: {}
+[4.396117] (-) TimerEvent: {}
+[4.499088] (-) TimerEvent: {}
+[4.601904] (-) TimerEvent: {}
+[4.704552] (-) TimerEvent: {}
+[4.808612] (-) TimerEvent: {}
+[4.912975] (-) TimerEvent: {}
+[5.018925] (-) TimerEvent: {}
+[5.121881] (-) TimerEvent: {}
+[5.224841] (-) TimerEvent: {}
+[5.328356] (-) TimerEvent: {}
+[5.431810] (-) TimerEvent: {}
+[5.534318] (-) TimerEvent: {}
+[5.636792] (-) TimerEvent: {}
+[5.740303] (-) TimerEvent: {}
+[5.843262] (-) TimerEvent: {}
+[5.945755] (-) TimerEvent: {}
+[6.048736] (-) TimerEvent: {}
+[6.151777] (-) TimerEvent: {}
+[6.254686] (-) TimerEvent: {}
+[6.357689] (-) TimerEvent: {}
+[6.460660] (-) TimerEvent: {}
+[6.564169] (-) TimerEvent: {}
+[6.667619] (-) TimerEvent: {}
+[6.771098] (-) TimerEvent: {}
+[6.872609] (-) TimerEvent: {}
+[6.914929] (rob0car_actors) StdoutLine: {'line': b'running egg_info\n'}
+[6.929778] (rob0car_actors) StdoutLine: {'line': b'writing ../build/rob0car_actors/rob0car_actors.egg-info/PKG-INFO\n'}
+[6.934207] (rob0car_actors) StdoutLine: {'line': b'writing dependency_links to ../build/rob0car_actors/rob0car_actors.egg-info/dependency_links.txt\n'}
+[6.940016] (rob0car_actors) StdoutLine: {'line': b'writing entry points to ../build/rob0car_actors/rob0car_actors.egg-info/entry_points.txt\n'}
+[6.946937] (rob0car_actors) StdoutLine: {'line': b'writing requirements to ../build/rob0car_actors/rob0car_actors.egg-info/requires.txt\n'}
+[6.948733] (rob0car_actors) StdoutLine: {'line': b'writing top-level names to ../build/rob0car_actors/rob0car_actors.egg-info/top_level.txt\n'}
+[6.972776] (-) TimerEvent: {}
+[7.073231] (-) TimerEvent: {}
+[7.180094] (-) TimerEvent: {}
+[7.283107] (-) TimerEvent: {}
+[7.385622] (-) TimerEvent: {}
+[7.488618] (-) TimerEvent: {}
+[7.591608] (-) TimerEvent: {}
+[7.599815] (rob0car_actors) StdoutLine: {'line': b"reading manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'\n"}
+[7.622723] (rob0car_actors) StdoutLine: {'line': b"writing manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'\n"}
+[7.627406] (rob0car_actors) StdoutLine: {'line': b'running build\n'}
+[7.628002] (rob0car_actors) StdoutLine: {'line': b'running build_py\n'}
+[7.635992] (rob0car_actors) StdoutLine: {'line': b'running install\n'}
+[7.644106] (rob0car_actors) StdoutLine: {'line': b'running install_lib\n'}
+[7.661206] (rob0car_actors) StdoutLine: {'line': b'running install_data\n'}
+[7.670397] (rob0car_actors) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.682581] (rob0car_actors) StdoutLine: {'line': b"removing '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[7.690455] (rob0car_actors) StdoutLine: {'line': b'Copying ../build/rob0car_actors/rob0car_actors.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info\n'}
+[7.692093] (-) TimerEvent: {}
+[7.723919] (rob0car_actors) StdoutLine: {'line': b'running install_scripts\n'}
+[7.793206] (-) TimerEvent: {}
+[7.896319] (-) TimerEvent: {}
+[7.978792] (rob0car_actors) StdoutLine: {'line': b'Installing rob0car_actors script to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/rob0car_actors\n'}
+[7.990422] (rob0car_actors) StdoutLine: {'line': b"writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log'\n"}
+[7.997157] (-) TimerEvent: {}
+[8.099668] (-) TimerEvent: {}
+[8.201732] (-) TimerEvent: {}
+[8.304648] (-) TimerEvent: {}
+[8.319751] (rob0car_actors) CommandEnded: {'returncode': 0}
+[8.406104] (-) TimerEvent: {}
+[8.506344] (rob0car_actors) JobEnded: {'identifier': 'rob0car_actors', 'rc': 0}
+[8.513673] (-) TimerEvent: {}
+[8.530249] (rob0car_control) JobStarted: {'identifier': 'rob0car_control'}
+[8.614115] (-) TimerEvent: {}
+[8.719770] (-) TimerEvent: {}
+[8.823033] (-) TimerEvent: {}
+[8.925499] (-) TimerEvent: {}
+[9.027791] (-) TimerEvent: {}
+[9.131973] (-) TimerEvent: {}
+[9.234927] (-) TimerEvent: {}
+[9.337421] (-) TimerEvent: {}
+[9.439951] (-) TimerEvent: {}
+[9.543908] (-) TimerEvent: {}
+[9.646925] (-) TimerEvent: {}
+[9.749933] (-) TimerEvent: {}
+[9.852837] (-) TimerEvent: {}
+[9.956355] (-) TimerEvent: {}
+[10.058853] (-) TimerEvent: {}
+[10.161165] (-) TimerEvent: {}
+[10.263818] (-) TimerEvent: {}
+[10.366100] (-) TimerEvent: {}
+[10.468565] (-) TimerEvent: {}
+[10.571312] (-) TimerEvent: {}
+[10.673377] (-) TimerEvent: {}
+[10.780196] (-) TimerEvent: {}
+[10.883202] (-) TimerEvent: {}
+[10.986240] (-) TimerEvent: {}
+[11.089232] (-) TimerEvent: {}
+[11.192131] (-) TimerEvent: {}
+[11.296107] (-) TimerEvent: {}
+[11.399613] (-) TimerEvent: {}
+[11.503068] (-) TimerEvent: {}
+[11.606083] (-) TimerEvent: {}
+[11.709511] (-) TimerEvent: {}
+[11.811047] (-) TimerEvent: {}
+[11.914129] (-) TimerEvent: {}
+[12.017544] (-) TimerEvent: {}
+[12.121939] (-) TimerEvent: {}
+[12.224963] (-) TimerEvent: {}
+[12.328425] (-) TimerEvent: {}
+[12.402260] (rob0car_control) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/rob0car_control', 'build', '--build-base', '/home/mexx/ROB0Car/workspace/src/build/rob0car_control/build', 'install', '--prefix', '/home/mexx/ROB0Car/workspace/src/install/rob0car_control', '--record', '/home/mexx/ROB0Car/workspace/src/build/rob0car_control/install.log', '--single-version-externally-managed'], 'cwd': '/home/mexx/ROB0Car/workspace/src/rob0car_control', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mexx', 'LC_TIME': 'de_DE.UTF-8', 'SSH_AGENT_PID': '1875', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/mexx', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'OLDPWD': '/home/mexx/ROB0Car/workspace/src/rob0car_launch', 'TERM_PROGRAM_VERSION': '1.60.0', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'de_DE.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '1657', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2732', '_colcon_cd_root': '/home/mexx/ros2_install', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install:/home/mexx/ROB0Car/workspace/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'mexx', 'JOURNAL_STREAM': '8:32319', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mexx', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models:/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/mexx/.local/bin:/opt/ros/foxy/bin:/home/mexx/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/UbuntuVM:@/tmp/.ICE-unix/1922,unix/UbuntuVM:/tmp/.ICE-unix/1922', 'INVOCATION_ID': '509832081a9648379f65e768ea2952cf', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'de_DE.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'LC_TELEPHONE': 'de_DE.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-33af4c6695.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'LC_NAME': 'de_DE.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'de_DE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'de_DE.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mexx/ROB0Car/workspace/src/build/rob0car_control', 'TURTLEBOT3_MODEL': 'waffle_pi', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'de_DE.UTF-8', 'BREAKPAD_DUMP_LOCATION': '/home/mexx/.config/Code/exthost Crash Reports', 'LC_PAPER': 'de_DE.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch'}, 'shell': False}
+[12.428870] (-) TimerEvent: {}
+[12.535332] (-) TimerEvent: {}
+[12.637871] (-) TimerEvent: {}
+[12.740845] (-) TimerEvent: {}
+[12.843858] (-) TimerEvent: {}
+[12.946901] (-) TimerEvent: {}
+[13.049773] (-) TimerEvent: {}
+[13.153278] (-) TimerEvent: {}
+[13.255741] (-) TimerEvent: {}
+[13.358278] (-) TimerEvent: {}
+[13.461752] (-) TimerEvent: {}
+[13.565684] (-) TimerEvent: {}
+[13.668657] (-) TimerEvent: {}
+[13.771165] (-) TimerEvent: {}
+[13.874668] (-) TimerEvent: {}
+[13.977653] (-) TimerEvent: {}
+[14.081595] (-) TimerEvent: {}
+[14.189122] (-) TimerEvent: {}
+[14.291800] (-) TimerEvent: {}
+[14.395899] (-) TimerEvent: {}
+[14.499374] (-) TimerEvent: {}
+[14.602907] (-) TimerEvent: {}
+[14.705352] (-) TimerEvent: {}
+[14.809326] (-) TimerEvent: {}
+[14.912284] (-) TimerEvent: {}
+[15.014832] (-) TimerEvent: {}
+[15.118293] (-) TimerEvent: {}
+[15.221784] (-) TimerEvent: {}
+[15.324730] (-) TimerEvent: {}
+[15.429071] (-) TimerEvent: {}
+[15.532159] (-) TimerEvent: {}
+[15.597913] (rob0car_control) StdoutLine: {'line': b'running egg_info\n'}
+[15.611013] (rob0car_control) StdoutLine: {'line': b'writing ../build/rob0car_control/rob0car_control.egg-info/PKG-INFO\n'}
+[15.613639] (rob0car_control) StdoutLine: {'line': b'writing dependency_links to ../build/rob0car_control/rob0car_control.egg-info/dependency_links.txt\n'}
+[15.615601] (rob0car_control) StdoutLine: {'line': b'writing entry points to ../build/rob0car_control/rob0car_control.egg-info/entry_points.txt\n'}
+[15.618666] (rob0car_control) StdoutLine: {'line': b'writing requirements to ../build/rob0car_control/rob0car_control.egg-info/requires.txt\n'}
+[15.620297] (rob0car_control) StdoutLine: {'line': b'writing top-level names to ../build/rob0car_control/rob0car_control.egg-info/top_level.txt\n'}
+[15.632760] (-) TimerEvent: {}
+[15.736187] (-) TimerEvent: {}
+[15.839196] (-) TimerEvent: {}
+[15.943145] (-) TimerEvent: {}
+[16.046629] (-) TimerEvent: {}
+[16.098001] (rob0car_control) StdoutLine: {'line': b"reading manifest file '../build/rob0car_control/rob0car_control.egg-info/SOURCES.txt'\n"}
+[16.114591] (rob0car_control) StdoutLine: {'line': b"writing manifest file '../build/rob0car_control/rob0car_control.egg-info/SOURCES.txt'\n"}
+[16.119485] (rob0car_control) StdoutLine: {'line': b'running build\n'}
+[16.120207] (rob0car_control) StdoutLine: {'line': b'running build_py\n'}
+[16.126297] (rob0car_control) StdoutLine: {'line': b'running install\n'}
+[16.138482] (rob0car_control) StdoutLine: {'line': b'running install_lib\n'}
+[16.147197] (-) TimerEvent: {}
+[16.178126] (rob0car_control) StdoutLine: {'line': b'running install_data\n'}
+[16.195101] (rob0car_control) StdoutLine: {'line': b'running install_egg_info\n'}
+[16.230193] (rob0car_control) StdoutLine: {'line': b"removing '/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages/rob0car_control-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[16.237889] (rob0car_control) StdoutLine: {'line': b'Copying ../build/rob0car_control/rob0car_control.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages/rob0car_control-0.0.0-py3.8.egg-info\n'}
+[16.247360] (-) TimerEvent: {}
+[16.260441] (rob0car_control) StdoutLine: {'line': b'running install_scripts\n'}
+[16.347771] (-) TimerEvent: {}
+[16.450772] (-) TimerEvent: {}
+[16.554081] (-) TimerEvent: {}
+[16.614870] (rob0car_control) StdoutLine: {'line': b'Installing rob0car_control script to /home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/rob0car_control\n'}
+[16.627438] (rob0car_control) StdoutLine: {'line': b"writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_control/install.log'\n"}
+[16.654319] (-) TimerEvent: {}
+[16.757358] (-) TimerEvent: {}
+[16.859281] (-) TimerEvent: {}
+[16.962649] (-) TimerEvent: {}
+[17.016864] (rob0car_control) CommandEnded: {'returncode': 0}
+[17.066389] (-) TimerEvent: {}
+[17.150432] (rob0car_control) JobEnded: {'identifier': 'rob0car_control', 'rc': 0}
+[17.163106] (rob0car_sensors) JobStarted: {'identifier': 'rob0car_sensors'}
+[17.174739] (-) TimerEvent: {}
+[17.276244] (-) TimerEvent: {}
+[17.379202] (-) TimerEvent: {}
+[17.482096] (-) TimerEvent: {}
+[17.584664] (-) TimerEvent: {}
+[17.689013] (-) TimerEvent: {}
+[17.793926] (-) TimerEvent: {}
+[17.896935] (-) TimerEvent: {}
+[17.999941] (-) TimerEvent: {}
+[18.104010] (-) TimerEvent: {}
+[18.206845] (-) TimerEvent: {}
+[18.309928] (-) TimerEvent: {}
+[18.412873] (-) TimerEvent: {}
+[18.516330] (-) TimerEvent: {}
+[18.620032] (-) TimerEvent: {}
+[18.724228] (-) TimerEvent: {}
+[18.827694] (-) TimerEvent: {}
+[18.930260] (-) TimerEvent: {}
+[19.032692] (-) TimerEvent: {}
+[19.136670] (-) TimerEvent: {}
+[19.239179] (-) TimerEvent: {}
+[19.342170] (-) TimerEvent: {}
+[19.446587] (-) TimerEvent: {}
+[19.549595] (-) TimerEvent: {}
+[19.653530] (-) TimerEvent: {}
+[19.756997] (-) TimerEvent: {}
+[19.861445] (-) TimerEvent: {}
+[19.964526] (-) TimerEvent: {}
+[20.067417] (-) TimerEvent: {}
+[20.170921] (-) TimerEvent: {}
+[20.274400] (-) TimerEvent: {}
+[20.377837] (-) TimerEvent: {}
+[20.481308] (-) TimerEvent: {}
+[20.584787] (-) TimerEvent: {}
+[20.687788] (-) TimerEvent: {}
+[20.791875] (-) TimerEvent: {}
+[20.895200] (-) TimerEvent: {}
+[20.997748] (-) TimerEvent: {}
+[21.102168] (-) TimerEvent: {}
+[21.204885] (-) TimerEvent: {}
+[21.307876] (-) TimerEvent: {}
+[21.360139] (rob0car_sensors) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/rob0car_sensors', 'build', '--build-base', '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build', 'install', '--prefix', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors', '--record', '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log', '--single-version-externally-managed'], 'cwd': '/home/mexx/ROB0Car/workspace/src/rob0car_sensors', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mexx', 'LC_TIME': 'de_DE.UTF-8', 'SSH_AGENT_PID': '1875', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/mexx', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'OLDPWD': '/home/mexx/ROB0Car/workspace/src/rob0car_launch', 'TERM_PROGRAM_VERSION': '1.60.0', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'de_DE.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '1657', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2732', '_colcon_cd_root': '/home/mexx/ros2_install', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install:/home/mexx/ROB0Car/workspace/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'mexx', 'JOURNAL_STREAM': '8:32319', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mexx', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models:/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/mexx/.local/bin:/opt/ros/foxy/bin:/home/mexx/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/UbuntuVM:@/tmp/.ICE-unix/1922,unix/UbuntuVM:/tmp/.ICE-unix/1922', 'INVOCATION_ID': '509832081a9648379f65e768ea2952cf', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'de_DE.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'LC_TELEPHONE': 'de_DE.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-33af4c6695.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'LC_NAME': 'de_DE.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'de_DE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'de_DE.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors', 'TURTLEBOT3_MODEL': 'waffle_pi', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'de_DE.UTF-8', 'BREAKPAD_DUMP_LOCATION': '/home/mexx/.config/Code/exthost Crash Reports', 'LC_PAPER': 'de_DE.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch'}, 'shell': False}
+[21.408276] (-) TimerEvent: {}
+[21.511820] (-) TimerEvent: {}
+[21.615145] (-) TimerEvent: {}
+[21.718177] (-) TimerEvent: {}
+[21.822594] (-) TimerEvent: {}
+[21.925688] (-) TimerEvent: {}
+[22.029528] (-) TimerEvent: {}
+[22.132513] (-) TimerEvent: {}
+[22.235017] (-) TimerEvent: {}
+[22.337514] (-) TimerEvent: {}
+[22.440020] (-) TimerEvent: {}
+[22.542980] (-) TimerEvent: {}
+[22.645488] (-) TimerEvent: {}
+[22.748958] (-) TimerEvent: {}
+[22.851548] (-) TimerEvent: {}
+[22.954520] (-) TimerEvent: {}
+[23.057427] (-) TimerEvent: {}
+[23.159703] (-) TimerEvent: {}
+[23.263396] (-) TimerEvent: {}
+[23.365892] (-) TimerEvent: {}
+[23.469359] (-) TimerEvent: {}
+[23.573337] (-) TimerEvent: {}
+[23.677281] (-) TimerEvent: {}
+[23.781261] (-) TimerEvent: {}
+[23.885700] (-) TimerEvent: {}
+[23.988666] (-) TimerEvent: {}
+[24.091719] (-) TimerEvent: {}
+[24.194650] (-) TimerEvent: {}
+[24.297647] (-) TimerEvent: {}
+[24.400627] (-) TimerEvent: {}
+[24.503725] (-) TimerEvent: {}
+[24.607082] (-) TimerEvent: {}
+[24.710083] (-) TimerEvent: {}
+[24.814520] (-) TimerEvent: {}
+[24.918500] (-) TimerEvent: {}
+[25.021462] (-) TimerEvent: {}
+[25.125617] (-) TimerEvent: {}
+[25.230399] (-) TimerEvent: {}
+[25.333373] (-) TimerEvent: {}
+[25.437307] (-) TimerEvent: {}
+[25.486434] (rob0car_sensors) StdoutLine: {'line': b'running egg_info\n'}
+[25.504838] (rob0car_sensors) StdoutLine: {'line': b'writing ../build/rob0car_sensors/rob0car_sensors.egg-info/PKG-INFO\n'}
+[25.507250] (rob0car_sensors) StdoutLine: {'line': b'writing dependency_links to ../build/rob0car_sensors/rob0car_sensors.egg-info/dependency_links.txt\n'}
+[25.509227] (rob0car_sensors) StdoutLine: {'line': b'writing entry points to ../build/rob0car_sensors/rob0car_sensors.egg-info/entry_points.txt\n'}
+[25.511073] (rob0car_sensors) StdoutLine: {'line': b'writing requirements to ../build/rob0car_sensors/rob0car_sensors.egg-info/requires.txt\n'}
+[25.512584] (rob0car_sensors) StdoutLine: {'line': b'writing top-level names to ../build/rob0car_sensors/rob0car_sensors.egg-info/top_level.txt\n'}
+[25.537848] (-) TimerEvent: {}
+[25.640842] (-) TimerEvent: {}
+[25.743337] (-) TimerEvent: {}
+[25.804270] (rob0car_sensors) StdoutLine: {'line': b"reading manifest file '../build/rob0car_sensors/rob0car_sensors.egg-info/SOURCES.txt'\n"}
+[25.811996] (rob0car_sensors) StdoutLine: {'line': b"writing manifest file '../build/rob0car_sensors/rob0car_sensors.egg-info/SOURCES.txt'\n"}
+[25.818242] (rob0car_sensors) StdoutLine: {'line': b'running build\n'}
+[25.818992] (rob0car_sensors) StdoutLine: {'line': b'running build_py\n'}
+[25.820373] (rob0car_sensors) StdoutLine: {'line': b'copying rob0car_sensors/rob0car_sensors.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors\n'}
+[25.821921] (rob0car_sensors) StdoutLine: {'line': b'copying rob0car_sensors/range_sensors.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors\n'}
+[25.824120] (rob0car_sensors) StdoutLine: {'line': b'running install\n'}
+[25.829842] (rob0car_sensors) StdoutLine: {'line': b'running install_lib\n'}
+[25.836337] (rob0car_sensors) StdoutLine: {'line': b'copying /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors/rob0car_sensors.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors\n'}
+[25.838121] (rob0car_sensors) StdoutLine: {'line': b'copying /home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/build/lib/rob0car_sensors/range_sensors.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors\n'}
+[25.842774] (rob0car_sensors) StdoutLine: {'line': b'byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors/rob0car_sensors.py to rob0car_sensors.cpython-38.pyc\n'}
+[25.844337] (-) TimerEvent: {}
+[25.881870] (rob0car_sensors) StdoutLine: {'line': b'byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors/range_sensors.py to range_sensors.cpython-38.pyc\n'}
+[25.887913] (rob0car_sensors) StdoutLine: {'line': b'running install_data\n'}
+[25.893155] (rob0car_sensors) StdoutLine: {'line': b'copying package.xml -> /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/share/rob0car_sensors\n'}
+[25.894209] (rob0car_sensors) StdoutLine: {'line': b'running install_egg_info\n'}
+[25.905851] (rob0car_sensors) StdoutLine: {'line': b"removing '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[25.908600] (rob0car_sensors) StdoutLine: {'line': b'Copying ../build/rob0car_sensors/rob0car_sensors.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages/rob0car_sensors-0.0.0-py3.8.egg-info\n'}
+[25.915042] (rob0car_sensors) StdoutLine: {'line': b'running install_scripts\n'}
+[25.944431] (-) TimerEvent: {}
+[26.038226] (rob0car_sensors) StdoutLine: {'line': b'Installing rob0car_sensors script to /home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/rob0car_sensors\n'}
+[26.045445] (-) TimerEvent: {}
+[26.052962] (rob0car_sensors) StdoutLine: {'line': b"writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_sensors/install.log'\n"}
+[26.145614] (-) TimerEvent: {}
+[26.226578] (rob0car_sensors) CommandEnded: {'returncode': 0}
+[26.249242] (-) TimerEvent: {}
+[26.307219] (rob0car_sensors) JobEnded: {'identifier': 'rob0car_sensors', 'rc': 0}
+[26.318453] (rob0car_launch) JobStarted: {'identifier': 'rob0car_launch'}
+[26.349602] (-) TimerEvent: {}
+[26.451750] (-) TimerEvent: {}
+[26.528640] (rob0car_launch) JobProgress: {'identifier': 'rob0car_launch', 'progress': 'cmake'}
+[26.542394] (rob0car_launch) JobProgress: {'identifier': 'rob0car_launch', 'progress': 'build'}
+[26.562003] (rob0car_launch) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch', '--', '-j1', '-l1'], 'cwd': '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'mexx'), ('LC_TIME', 'de_DE.UTF-8'), ('SSH_AGENT_PID', '1875'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/mexx'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('OLDPWD', '/home/mexx/ROB0Car/workspace/src/rob0car_launch'), ('TERM_PROGRAM_VERSION', '1.60.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'de_DE.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1657'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2732'), ('_colcon_cd_root', '/home/mexx/ros2_install'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install:/home/mexx/ROB0Car/workspace/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'mexx'), ('JOURNAL_STREAM', '8:32319'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'mexx'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models:/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/mexx/.local/bin:/opt/ros/foxy/bin:/home/mexx/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuVM:@/tmp/.ICE-unix/1922,unix/UbuntuVM:/tmp/.ICE-unix/1922'), ('INVOCATION_ID', '509832081a9648379f65e768ea2952cf'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-33af4c6695.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch'), ('TURTLEBOT3_MODEL', 'waffle_pi'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('BREAKPAD_DUMP_LOCATION', '/home/mexx/.config/Code/exthost Crash Reports'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy')]), 'shell': False}
+[26.565021] (-) TimerEvent: {}
+[26.684480] (-) TimerEvent: {}
+[26.787236] (-) TimerEvent: {}
+[26.888618] (-) TimerEvent: {}
+[26.990512] (-) TimerEvent: {}
+[27.092298] (-) TimerEvent: {}
+[27.189676] (rob0car_launch) CommandEnded: {'returncode': 0}
+[27.192794] (-) TimerEvent: {}
+[27.316595] (-) TimerEvent: {}
+[27.420038] (-) TimerEvent: {}
+[27.491574] (rob0car_launch) JobProgress: {'identifier': 'rob0car_launch', 'progress': 'install'}
+[27.520667] (-) TimerEvent: {}
+[27.617330] (rob0car_launch) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch'], 'cwd': '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'mexx'), ('LC_TIME', 'de_DE.UTF-8'), ('SSH_AGENT_PID', '1875'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/mexx'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('OLDPWD', '/home/mexx/ROB0Car/workspace/src/rob0car_launch'), ('TERM_PROGRAM_VERSION', '1.60.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'de_DE.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1657'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2732'), ('_colcon_cd_root', '/home/mexx/ros2_install'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install:/home/mexx/ROB0Car/workspace/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'mexx'), ('JOURNAL_STREAM', '8:32319'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'mexx'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models:/home/mexx/turtlebot3_ws/src/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/mexx/.local/bin:/opt/ros/foxy/bin:/home/mexx/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuVM:@/tmp/.ICE-unix/1922,unix/UbuntuVM:/tmp/.ICE-unix/1922'), ('INVOCATION_ID', '509832081a9648379f65e768ea2952cf'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-33af4c6695.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/mexx/ROB0Car/workspace/src/build/rob0car_launch'), ('TURTLEBOT3_MODEL', 'waffle_pi'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_control/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_actors/lib/python3.8/site-packages:/home/mexx/ROB0Car/workspace/install/rob0car_sensors/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('BREAKPAD_DUMP_LOCATION', '/home/mexx/.config/Code/exthost Crash Reports'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/mexx/ROB0Car/workspace/src/install/rob0car_launch:/home/mexx/ROB0Car/workspace/src/install/rob0car_sensors:/home/mexx/ROB0Car/workspace/src/install/rob0car_control:/home/mexx/ROB0Car/workspace/src/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_control:/home/mexx/ROB0Car/workspace/install/rob0car_actors:/home/mexx/ROB0Car/workspace/install/rob0car_sensors:/opt/ros/foxy')]), 'shell': False}
+[27.620878] (-) TimerEvent: {}
+[27.753893] (-) TimerEvent: {}
+[27.796549] (rob0car_launch) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[27.803185] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/launch\n'}
+[27.803937] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/launch/rob0car.launch.py\n'}
+[27.810212] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/package_run_dependencies/rob0car_launch\n'}
+[27.811608] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/parent_prefix_path/rob0car_launch\n'}
+[27.812698] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/ament_prefix_path.sh\n'}
+[27.813876] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/ament_prefix_path.dsv\n'}
+[27.818420] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/path.sh\n'}
+[27.819867] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/environment/path.dsv\n'}
+[27.820620] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.bash\n'}
+[27.822152] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.sh\n'}
+[27.822830] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.zsh\n'}
+[27.823679] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/local_setup.dsv\n'}
+[27.824691] (rob0car_launch) StdoutLine: {'line': b'-- Installing: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.dsv\n'}
+[27.831165] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/ament_index/resource_index/packages/rob0car_launch\n'}
+[27.835036] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/cmake/rob0car_launchConfig.cmake\n'}
+[27.835672] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/cmake/rob0car_launchConfig-version.cmake\n'}
+[27.836406] (rob0car_launch) StdoutLine: {'line': b'-- Up-to-date: /home/mexx/ROB0Car/workspace/src/install/rob0car_launch/share/rob0car_launch/package.xml\n'}
+[27.851633] (rob0car_launch) CommandEnded: {'returncode': 0}
+[27.858713] (-) TimerEvent: {}
+[27.966261] (-) TimerEvent: {}
+[28.068252] (-) TimerEvent: {}
+[28.172621] (-) TimerEvent: {}
+[28.281499] (-) TimerEvent: {}
+[28.385918] (-) TimerEvent: {}
+[28.415044] (rob0car_launch) JobEnded: {'identifier': 'rob0car_launch', 'rc': 0}
+[28.446966] (-) EventReactorShutdown: {}

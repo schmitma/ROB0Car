@@ -1,0 +1,3 @@
+[console_scripts]
+rob0car_sensors = rob0car_sensors.rob0car_sensors:main
+

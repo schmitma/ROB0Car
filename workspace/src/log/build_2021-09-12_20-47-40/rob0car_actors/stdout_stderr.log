@@ -1,0 +1,26 @@
+running egg_info
+writing ../build/rob0car_actors/rob0car_actors.egg-info/PKG-INFO
+writing dependency_links to ../build/rob0car_actors/rob0car_actors.egg-info/dependency_links.txt
+writing entry points to ../build/rob0car_actors/rob0car_actors.egg-info/entry_points.txt
+writing requirements to ../build/rob0car_actors/rob0car_actors.egg-info/requires.txt
+writing top-level names to ../build/rob0car_actors/rob0car_actors.egg-info/top_level.txt
+reading manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+writing manifest file '../build/rob0car_actors/rob0car_actors.egg-info/SOURCES.txt'
+running build
+running build_py
+copying rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+copying rob0car_actors/motor.py -> /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors
+running install
+running install_lib
+copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/rob0car_actors.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+copying /home/mexx/ROB0Car/workspace/src/build/rob0car_actors/build/lib/rob0car_actors/motor.py -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors
+byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/rob0car_actors.py to rob0car_actors.cpython-38.pyc
+byte-compiling /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors/motor.py to motor.cpython-38.pyc
+running install_data
+copying package.xml -> /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/share/rob0car_actors
+running install_egg_info
+removing '/home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../build/rob0car_actors/rob0car_actors.egg-info to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/python3.8/site-packages/rob0car_actors-0.0.0-py3.8.egg-info
+running install_scripts
+Installing rob0car_actors script to /home/mexx/ROB0Car/workspace/src/install/rob0car_actors/lib/rob0car_actors
+writing list of installed files to '/home/mexx/ROB0Car/workspace/src/build/rob0car_actors/install.log'
