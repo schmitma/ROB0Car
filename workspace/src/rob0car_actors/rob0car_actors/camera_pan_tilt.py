@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import logging
 import sys
-from pca9685 import PCA9685
+from rob0car_actors.pca9685 import PCA9685
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
