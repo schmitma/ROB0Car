@@ -5,11 +5,11 @@ import logging
 import sys
 import rclpy
 from rclpy.node import Node
-from rob0car_actors.rob0car_actors.camera_pan_tilt import CameraPanTilt
+from rob0car_actors.camera_pan_tilt import CameraPanTilt
 from sensor_msgs.msg import Joy
 from rob0car_interfaces.msg import ESC
-from motor import Motor
-from steering import Steering
+from rob0car_actors.motor import Motor
+from rob0car_actors.steering import Steering
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
