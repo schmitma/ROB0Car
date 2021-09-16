@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 import time, logging, sys
-from range_sensors import UltrasonicDistanceSensor
+from rob0car_sensors.range_sensors import UltrasonicDistanceSensor
 
 #ROS 2
 import rclpy
